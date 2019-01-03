@@ -12,6 +12,6 @@ class GradientPlaneScene: Scene {
     
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
-        children.append(ColoredPlane(device: device, rect: CGRect(x: -1, y: -1, width: 2, height: 2)))
+        children.append(ColoredPlane(device: device))
     }
 }

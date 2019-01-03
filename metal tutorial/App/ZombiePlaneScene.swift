@@ -15,9 +15,16 @@ class ZombiePlaneScene: Scene {
         
         guard let zombiePlane = zombiePlane else { expectationFail(); return }
         children.append(zombiePlane)
+        
+        zombiePlane.position.y = -0.5
+        
+        let quad2 = TexturedPlane(device: device, textureImageName: "picture.png")
+        quad2?.position.y = 1.5
+        quad2?.scale = float3(0.5)
+        quad2.map { zombiePlane.children.append($0) }
     }
     
-    lazy var zombiePlane = TexturedPlane(device: device, rect: CGRect(x: -1, y: -1, width: 2, height: 2), textureImageName: "picture.png")
+    lazy var zombiePlane = TexturedPlane(device: device, textureImageName: "picture.png")
     
     override func render(with encoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
         let projectionMatrix = matrix_float4x4(projectionFov: 60.fl.degreesToRadians, aspect: size.aspectRatio.fl, nearZ: 0.1, farZ: 100)
@@ -26,7 +33,7 @@ class ZombiePlaneScene: Scene {
     }
     
     override func animate(time: TimeInterval) {
-        zombiePlane?.rotation.x = time.fl
+        zombiePlane?.rotation.y = time.fl
         zombiePlane?.rotation.z = time.fl
     }
 }

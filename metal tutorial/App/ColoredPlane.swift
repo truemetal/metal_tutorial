@@ -14,7 +14,8 @@ class ColoredPlane: Plane<VertexWithColor> {
     override var vertexFunctionName: String { return "animate_vertex_shader" }
     override var fragmentFunctionName: String { return "noop_fragment_shader" }
     
-    init(device: MTLDevice, rect: CGRect) {
+    init(device: MTLDevice) {
+        let rect = CGRect(x: -1, y: -1, width: 2, height: 2)
         let vertecies = zip(rect.vertexPositions, colors).map { VertexWithColor(position: $0, color: $1) }
         super.init(device: device, vertecies: vertecies)
     }

@@ -15,13 +15,14 @@ class TexturedPlane: Plane<VertexWithTexture>, Texturable {
     var texture: MTLTexture? = nil
     var maskTexture: MTLTexture? = nil
     
-    convenience init?(device: MTLDevice, rect: CGRect, textureImageName: String, maskImageName: String? = nil) {
+    convenience init?(device: MTLDevice, textureImageName: String, maskImageName: String? = nil) {
         guard let texture = TexturedPlane.createTexture(withImageName: textureImageName, device: device) else { return nil }
         let maskTexture = maskImageName.flatMap { TexturedPlane.createTexture(withImageName: $0, device: device) }
-        self.init(device: device, rect: rect, texture: texture, maskTexture: maskTexture)
+        self.init(device: device, texture: texture, maskTexture: maskTexture)
     }
     
-    init(device: MTLDevice, rect: CGRect, texture: MTLTexture, maskTexture: MTLTexture?) {
+    init(device: MTLDevice, texture: MTLTexture, maskTexture: MTLTexture?) {
+        let rect = CGRect(x: -1, y: -1, width: 2, height: 2)
         let vertecies = zip(rect.vertexPositions, texureCoords).map { VertexWithTexture(position: $0, textureCoord: $1) }
         
         super.init(device: device, vertecies: vertecies)
