@@ -1,5 +1,5 @@
 //
-//  FPSLogger.swift
+//  FPSCalculator.swift
 //  metal tutorial
 //
 //  Created by Dan Pashchenko on 1/1/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FPSLogger {
+class FPSCalculator {
     
     let timer: Timer
     
@@ -17,7 +17,7 @@ class FPSLogger {
     }
     
     init() {
-        weak var welf: FPSLogger?
+        weak var welf: FPSCalculator?
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
             welf?.logFps()
         })
@@ -25,10 +25,12 @@ class FPSLogger {
         welf = self
     }
     
+    var updateFPSBlock: Block<Int>?
+    
     private var framesCount = 0
     
     private func logFps() {
-        print(framesCount)
+        updateFPSBlock?(framesCount)
         framesCount = 0
     }
     

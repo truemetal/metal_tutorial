@@ -10,19 +10,24 @@ import UIKit
 import MetalKit
 
 typealias VoidBlock = ()->()
+typealias Block<T> = (T)->()
 func expectationFail() { abort() }
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var lblFPS: UILabel!
+    
     var metalView: MTKView { return view as! MTKView }
     lazy var renderer = Renderer(metalView: metalView)
-    let fpsLogger = FPSLogger()
+    let fpsCalculator = FPSCalculator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        renderer.scene = GradientPlaneScene(device: renderer.device, size: view.bounds.size)
+        lblFPS.text = ""
+        fpsCalculator.updateFPSBlock = { [weak self] in self?.lblFPS.text = "\($0)" }
+        renderer.didDrawFrameBlock = { [weak self] in self?.fpsCalculator.didDisplayFrame() }
         
-        renderer.didDrawFrameBlock = { [weak self] in self?.fpsLogger.didDisplayFrame() }
+        renderer.scene = GradientPlaneScene(device: renderer.device, size: view.bounds.size)
     }
 }
