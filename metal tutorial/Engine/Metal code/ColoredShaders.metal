@@ -20,18 +20,10 @@ struct VertexOut {
     float4 color;
 };
 
-vertex VertexOut noop_vertex_shader(const VertexIn vertexIn [[ stage_in ]]) {
+vertex VertexOut noop_vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants &modelConstants [[ buffer(1) ]]) {
     VertexOut res;
-    res.position = vertexIn.position;
+    res.position = modelConstants.modelViewMatrix * vertexIn.position;
     res.color = vertexIn.color;
-    return res;
-}
-
-vertex VertexOut animate_vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants &constants [[ buffer(1) ]]) {
-    VertexOut res;
-    res.position = constants.modelViewMatrix * vertexIn.position;
-    res.color = vertexIn.color;
-    
     return res;
 }
 

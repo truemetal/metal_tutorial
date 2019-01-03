@@ -1,5 +1,5 @@
 //
-//  Plane.swift
+//  Primitive.swift
 //  metal tutorial
 //
 //  Created by Bogdan Pashchenko on 1/3/19.
@@ -8,18 +8,17 @@
 
 import MetalKit
 
-class Plane<VertexType>: Node, Renderable where VertexType: VertexWithDescriptor {
+class Primitive<VertexType>: Node, Renderable where VertexType: VertexWithDescriptor {
     
     var vertexFunctionName: String { return "noop_vertex_shader" }
     var fragmentFunctionName: String { return "noop_fragment_shader" }
     var vertexDescriptor: MTLVertexDescriptor { return VertexType.descriptor }
     lazy var pipelineState: MTLRenderPipelineState? = buildPipelineState(withDevice: device)!
     
-    init(device: MTLDevice, vertecies: [VertexType]) {
-        if vertecies.count != 4 { expectationFail() }
+    init(device: MTLDevice) {
         self.device = device
-        self.vertecies = vertecies
         super.init()
+        setVerteciesAndIndecies()
         buildBuffers()
     }
     
@@ -33,8 +32,9 @@ class Plane<VertexType>: Node, Renderable where VertexType: VertexWithDescriptor
     var vertexBuffer: MTLBuffer?
     var indexBuffer: MTLBuffer?
     
-    let vertecies: [VertexType]
-    let indecies: [UInt32] = [[0, 1, 2], [0, 2, 3]].flatMap { $0 }
+    var vertecies: [VertexType] = []
+    var indecies: [UInt32] = []
+    func setVerteciesAndIndecies() { }
     
     func doRender(encoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard let indexBuffer = indexBuffer, let pipelineState = pipelineState else { expectationFail(); return }

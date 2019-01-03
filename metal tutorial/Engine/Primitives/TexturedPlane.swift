@@ -8,7 +8,7 @@
 
 import MetalKit
 
-class TexturedPlane: Plane<VertexWithTexture>, Texturable {
+class TexturedPlane: Primitive<VertexWithTexture>, Texturable {
     
     override var vertexFunctionName: String { return "textured_vertex_shader" }
     override var fragmentFunctionName: String { return maskTexture != nil ? "masked_textured_fragment_shader" : "textured_fragment_shader" }
@@ -22,15 +22,17 @@ class TexturedPlane: Plane<VertexWithTexture>, Texturable {
     }
     
     init(device: MTLDevice, texture: MTLTexture, maskTexture: MTLTexture?) {
-        let rect = CGRect(x: -1, y: -1, width: 2, height: 2)
-        let vertecies = zip(rect.vertexPositions, texureCoords).map { VertexWithTexture(position: $0, textureCoord: $1) }
-        
-        super.init(device: device, vertecies: vertecies)
+        super.init(device: device)
         self.texture = texture
         self.maskTexture = maskTexture
     }
     
-    let texureCoords = [float2(0, 1), float2(0, 0), float2(1, 0), float2(1, 1)]
+    override func setVerteciesAndIndecies() {
+        let rect = CGRect(x: -1, y: -1, width: 2, height: 2)
+        let texureCoords = [float2(0, 1), float2(0, 0), float2(1, 0), float2(1, 1)]
+        vertecies = zip(rect.vertexPositions, texureCoords).map { VertexWithTexture(position: $0, textureCoord: $1) }
+        indecies = [0, 1, 2, 0, 2, 3]
+    }
     
     override func render(with encoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
         encoder.setFragmentTexture(texture, index: 0)

@@ -24,10 +24,10 @@ class ViewController: UIViewController {
         fpsCalculator.updateFPSBlock = { [weak self] in self?.lblFPS.text = "\($0)" }
         renderer.didDrawFrameBlock = { [weak self] in self?.fpsCalculator.didDisplayFrame() }
         
-        renderer.scene = ZombiePlaneScene(device: renderer.device, size: view.bounds.size)
+        renderer.scene = CubeScene(device: renderer.device, size: view.bounds.size)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        (renderer.scene as? ZombiePlaneScene)?.aspectRatio = size.aspectRatio.fl
+        (renderer.scene as? CubeScene)?.aspectRatio = size.aspectRatio.fl
     }
 }

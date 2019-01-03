@@ -42,6 +42,13 @@ class Renderer: NSObject {
         descriptor.magFilter = .linear
         return device.makeSamplerState(descriptor: descriptor)
     }
+    
+    lazy var depthStencilState: MTLDepthStencilState? = {
+        let d = MTLDepthStencilDescriptor()
+        d.depthCompareFunction = .less
+        d.isDepthWriteEnabled = true
+        return device.makeDepthStencilState(descriptor: d)
+    }()
 }
 
 extension Renderer: MTKViewDelegate {
@@ -51,22 +58,22 @@ extension Renderer: MTKViewDelegate {
     }
     
     func draw(in view: MTKView) {
-        guard let drawable = view.currentDrawable, let descriptor = view.currentRenderPassDescriptor else { expectationFail(); return }
+        guard let drawable = view.currentDrawable, let descriptor = view.currentRenderPassDescriptor, let buffer = commandQueue.makeCommandBuffer() else { expectationFail(); return }
         
-        let buffer = commandQueue.makeCommandBuffer()
-        
-        if let encoder = buffer?.makeRenderCommandEncoder(descriptor: descriptor) {
-            encoder.setFragmentSamplerState(samplerState, index: 0)
-            renderScene(to: encoder)
-        }
-        
-        buffer?.present(drawable)
-        buffer?.commit()
+        renderScene(with: buffer, descriptor: descriptor)
+        buffer.present(drawable)
+        buffer.commit()
         didDrawFrameBlock?()
     }
     
-    func renderScene(to encoder: MTLRenderCommandEncoder) {
-        scene?.render(with: encoder, parentModelViewMatrix: matrix_identity_float4x4)
+    func renderScene(with buffer: MTLCommandBuffer, descriptor: MTLRenderPassDescriptor) {
+        guard let encoder = buffer.makeRenderCommandEncoder(descriptor: descriptor), let scene = scene else { expectationFail(); return }
+        
+        encoder.setDepthStencilState(depthStencilState)
+        encoder.setCullMode(.back)
+        encoder.setFrontFacing(.counterClockwise)
+        encoder.setFragmentSamplerState(samplerState, index: 0)
+        scene.render(with: encoder, parentModelViewMatrix: matrix_identity_float4x4)
         encoder.endEncoding()
     }
 }
