@@ -16,19 +16,16 @@ class Renderer: NSObject {
     let library: MTLLibrary
     var didDrawFrameBlock: VoidBlock?
     var scene: Scene?
-    let samplerState: MTLSamplerState
     
     init?(metalView: MTKView) {
         guard let device = MTLCreateSystemDefaultDevice(),
             let commandQueue = device.makeCommandQueue(),
-            let library = device.makeDefaultLibrary(),
-            let samplerState = Renderer.buildSamplerState(with: device) else { return nil }
+            let library = device.makeDefaultLibrary() else { return nil }
         
         self.device = device
         self.commandQueue = commandQueue
         self.metalView = metalView
         self.library = library
-        self.samplerState = samplerState
         super.init()
         
         metalView.device = device
@@ -36,12 +33,12 @@ class Renderer: NSObject {
         metalView.clearColor = MTLClearColor(red: 0, green: 1, blue: 0, alpha: 1)
     }
     
-    private class func buildSamplerState(with device: MTLDevice) -> MTLSamplerState? {
+    lazy var samplerState: MTLSamplerState? = {
         let descriptor = MTLSamplerDescriptor()
         descriptor.minFilter = .linear
         descriptor.magFilter = .linear
         return device.makeSamplerState(descriptor: descriptor)
-    }
+    }()
     
     lazy var depthStencilState: MTLDepthStencilState? = {
         let d = MTLDepthStencilDescriptor()

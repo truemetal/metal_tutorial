@@ -17,7 +17,11 @@ class CubeScene: Scene {
         super.init(device: device, size: size)
         defer { aspectRatio = size.aspectRatio.fl }
         
+        children.append(zombiePlane)
         children.append(cube)
+        
+        zombiePlane.scale = float3(3)
+        zombiePlane.position.z = -3
     }
     
     var aspectRatio: Float = 0.75 { didSet { updateProjectionMatrix() } }
@@ -27,6 +31,7 @@ class CubeScene: Scene {
     }
     
     lazy var cube = Cube(device: device)
+    lazy var zombiePlane = TexturedPlane(device: device, textureImageName: "picture.png")!
     
     override func render(with encoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
         super.render(with: encoder, parentModelViewMatrix: matrix_multiply(projectionMatrix, viewMatrix))
