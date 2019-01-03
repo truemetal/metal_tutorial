@@ -175,15 +175,15 @@
 		649FFDFC21DBD9BB00C4CEB7 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				6493B1BC21DE16D9003CE6C3 /* Vertecies */,
+				6474021F21DE43F2002F033E /* Metal code */,
 				6461815621891C5900E3B89D /* Renderer.swift */,
 				649FFE0121DC064700C4CEB7 /* Renderable.swift */,
 				6447EA8C21DD351A00DD33FF /* Texturable.swift */,
-				6493B1BC21DE16D9003CE6C3 /* Vertecies */,
 				649FFDF821DBD8B700C4CEB7 /* Node.swift */,
 				649FFDFD21DBDC5C00C4CEB7 /* Scene.swift */,
 				6493B1C121DE1944003CE6C3 /* Plane.swift */,
 				6474021B21DE4245002F033E /* ModelConstants.swift */,
-				6474021F21DE43F2002F033E /* Metal code */,
 			);
 			path = Engine;
 			sourceTree = "<group>";

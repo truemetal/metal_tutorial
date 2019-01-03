@@ -26,4 +26,8 @@ class ViewController: UIViewController {
         
         renderer.scene = ZombiePlaneScene(device: renderer.device, size: view.bounds.size)
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        (renderer.scene as? ZombiePlaneScene)?.aspectRatio = size.aspectRatio.fl
+    }
 }
