@@ -16,7 +16,6 @@ struct RenderConstants {
 struct VertexIn {
     float4 position [[ attribute(0) ]];
     float4 color [[ attribute(1) ]];
-    float2 texCoord [[ attribute(2) ]];
 };
 
 struct VertexOut {
@@ -24,14 +23,21 @@ struct VertexOut {
     float4 color;
 };
 
-vertex VertexOut noop_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
-                               constant RenderConstants &constants [[ buffer(1) ]],
-                               uint vertexId [[ vertex_id ]]) {
+vertex VertexOut noop_vertex_shader(const VertexIn vertexIn [[ stage_in ]]) {
     VertexOut res;
     res.position = vertexIn.position;
-    //    res.position.x += constants.xOffset;
     res.color = vertexIn.color;
+    return res;
+}
 
+vertex VertexOut animate_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+                                    constant RenderConstants &constants [[ buffer(1) ]],
+                                    uint vertexId [[ vertex_id ]]) {
+    VertexOut res;
+    res.position = vertexIn.position;
+    res.position.x += constants.xOffset;
+    res.color = vertexIn.color;
+    
     return res;
 }
 

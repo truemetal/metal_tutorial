@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        renderer.scene = TexturedPlaneScene(device: renderer.device, size: view.bounds.size)
+        renderer.scene = GradientPlaneScene(device: renderer.device, size: view.bounds.size)
         
         renderer.didDrawFrameBlock = { [weak self] in self?.fpsLogger.didDisplayFrame() }
     }

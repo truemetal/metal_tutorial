@@ -17,7 +17,7 @@ struct VertexWithColor {
 
 import MetalKit
 
-extension VertexWithColor {
+extension VertexWithColor: VertexWithDescriptor {
     
     static let descriptor: MTLVertexDescriptor = {
         let d = MTLVertexDescriptor()
