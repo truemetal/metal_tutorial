@@ -7,11 +7,8 @@
 //
 
 #include <metal_stdlib>
+#include "Constants.metal"
 using namespace metal;
-
-struct RenderConstants {
-    float xOffset;
-};
 
 struct VertexIn {
     float4 position [[ attribute(0) ]];
@@ -30,12 +27,9 @@ vertex VertexOut noop_vertex_shader(const VertexIn vertexIn [[ stage_in ]]) {
     return res;
 }
 
-vertex VertexOut animate_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
-                                    constant RenderConstants &constants [[ buffer(1) ]],
-                                    uint vertexId [[ vertex_id ]]) {
+vertex VertexOut animate_vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants &constants [[ buffer(1) ]]) {
     VertexOut res;
-    res.position = vertexIn.position;
-    res.position.x += constants.xOffset;
+    res.position = constants.modelViewMatrix * vertexIn.position;
     res.color = vertexIn.color;
     
     return res;

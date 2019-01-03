@@ -20,15 +20,4 @@ class ColoredPlane: Plane<VertexWithColor> {
     }
     
     let colors: [float4] = [float4(1, 0, 0, 1), float4(0, 1, 0, 1), float4(0, 0, 1, 1), float4(1, 0, 1, 1)]
-    
-    override func render(with encoder: MTLRenderCommandEncoder, time: TimeInterval) {
-        setCurrentOffset(to: encoder, time: time)
-        super.render(with: encoder, time: time)
-    }
-    
-    func setCurrentOffset(to encoder: MTLRenderCommandEncoder, time: TimeInterval) {
-        struct RenderConstants { let xOffset: Float }
-        var constants = RenderConstants(xOffset: Float(sin(time)))
-        encoder.setVertexBytes(&constants, length: MemoryLayout.size(ofValue: constants), index: 1)
-    }
 }

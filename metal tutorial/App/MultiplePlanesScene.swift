@@ -17,7 +17,7 @@ class MultiplePlanesScene: Scene {
         let size = 1 / Double(count) * 2
         
 //        guard let url = Bundle.main.url(forResource: "picture.png", withExtension: nil),
-//            let texture = try? MTKTextureLoader(device: device).newTexture(URL: url, options: [.origin : MTKTextureLoader.Origin.bottomLeft]) else { abort() }
+        //            let texture = try? MTKTextureLoader(device: device).newTexture(URL: url, options: [.origin : MTKTextureLoader.Origin.bottomLeft]) else { expectationFail(); return }
         
         for x in 0 ..< count {
             for y in 0 ..< count {

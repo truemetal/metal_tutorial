@@ -9,16 +9,18 @@
 import MetalKit
 
 protocol Renderable {
-    var pipelineState: MTLRenderPipelineState { get set }
+    var pipelineState: MTLRenderPipelineState? { get set }
     var vertexFunctionName: String { get }
     var fragmentFunctionName: String { get }
-    var vertexDescriptor: MTLVertexDescriptor? { get }
+    var vertexDescriptor: MTLVertexDescriptor { get }
+    
+    func doRender(encoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4)
 }
 
 extension Renderable {
     
-    func buildPipelineState(withDevice device: MTLDevice) -> MTLRenderPipelineState {
-        guard let library = device.makeDefaultLibrary() else { abort() }
+    func buildPipelineState(withDevice device: MTLDevice) -> MTLRenderPipelineState? {
+        guard let library = device.makeDefaultLibrary() else { expectationFail(); return nil }
         
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
         pipelineDescriptor.vertexDescriptor = vertexDescriptor
@@ -31,7 +33,9 @@ extension Renderable {
         }
         catch {
             print(error)
-            abort()
+            expectationFail()
         }
+        
+        return nil
     }
 }

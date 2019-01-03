@@ -18,11 +18,11 @@ class Renderer: NSObject {
     var scene: Scene?
     let samplerState: MTLSamplerState
     
-    init(metalView: MTKView) {
+    init?(metalView: MTKView) {
         guard let device = MTLCreateSystemDefaultDevice(),
             let commandQueue = device.makeCommandQueue(),
             let library = device.makeDefaultLibrary(),
-            let samplerState = Renderer.buildSamplerState(with: device) else { abort() }
+            let samplerState = Renderer.buildSamplerState(with: device) else { return nil }
         
         self.device = device
         self.commandQueue = commandQueue
@@ -35,8 +35,6 @@ class Renderer: NSObject {
         metalView.delegate = self
         metalView.clearColor = MTLClearColor(red: 0, green: 1, blue: 0, alpha: 1)
     }
-    
-    let startTime = Date()
     
     private class func buildSamplerState(with device: MTLDevice) -> MTLSamplerState? {
         let descriptor = MTLSamplerDescriptor()
@@ -53,7 +51,7 @@ extension Renderer: MTKViewDelegate {
     }
     
     func draw(in view: MTKView) {
-        guard let drawable = view.currentDrawable, let descriptor = view.currentRenderPassDescriptor else { abort() }
+        guard let drawable = view.currentDrawable, let descriptor = view.currentRenderPassDescriptor else { expectationFail(); return }
         
         let buffer = commandQueue.makeCommandBuffer()
         
@@ -68,7 +66,7 @@ extension Renderer: MTKViewDelegate {
     }
     
     func renderScene(to encoder: MTLRenderCommandEncoder) {
-        scene?.render(with: encoder, time: Date().timeIntervalSince(startTime))
+        scene?.render(with: encoder, parentModelViewMatrix: matrix_identity_float4x4)
         encoder.endEncoding()
     }
 }

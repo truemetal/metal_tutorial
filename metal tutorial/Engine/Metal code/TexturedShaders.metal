@@ -7,6 +7,7 @@
 //
 
 #include <metal_stdlib>
+#include "Constants.metal"
 using namespace metal;
 
 struct TexturedVertexIn {
@@ -19,10 +20,9 @@ struct TexturedVertexOut {
     float2 textureCoord;
 };
 
-vertex TexturedVertexOut noop_textured_vertex_shader(const TexturedVertexIn vertexIn [[ stage_in ]],
-                                                     uint vertexId [[ vertex_id ]]) {
+vertex TexturedVertexOut textured_vertex_shader(const TexturedVertexIn vertexIn [[ stage_in ]], constant ModelConstants &constants [[ buffer(1) ]]) {
     TexturedVertexOut res;
-    res.position = vertexIn.position;
+    res.position = constants.modelViewMatrix * vertexIn.position;
     res.textureCoord = vertexIn.textureCoord;
     return res;
 }

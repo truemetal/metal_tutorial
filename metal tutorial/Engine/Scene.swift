@@ -18,4 +18,12 @@ class Scene: Node {
     
     var device: MTLDevice
     var size: CGSize
+    
+    let startTime = Date()
+    func animate(time: TimeInterval) { }
+    
+    override func render(with encoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
+        animate(time: Date().timeIntervalSince(startTime))
+        super.render(with: encoder, parentModelViewMatrix: parentModelViewMatrix)
+    }
 }

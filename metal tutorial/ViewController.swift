@@ -9,16 +9,12 @@
 import UIKit
 import MetalKit
 
-typealias VoidBlock = ()->()
-typealias Block<T> = (T)->()
-func expectationFail() { abort() }
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var lblFPS: UILabel!
     
     var metalView: MTKView { return view as! MTKView }
-    lazy var renderer = Renderer(metalView: metalView)
+    lazy var renderer: Renderer! = Renderer(metalView: metalView)
     let fpsCalculator = FPSCalculator()
     
     override func viewDidLoad() {

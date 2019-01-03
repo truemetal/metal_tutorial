@@ -10,7 +10,7 @@ import MetalKit
 
 class TexturedPlane: Plane<VertexWithTexture>, Texturable {
     
-    override var vertexFunctionName: String { return "noop_textured_vertex_shader" }
+    override var vertexFunctionName: String { return "textured_vertex_shader" }
     override var fragmentFunctionName: String { return maskTexture != nil ? "masked_textured_fragment_shader" : "textured_fragment_shader" }
     var texture: MTLTexture? = nil
     var maskTexture: MTLTexture? = nil
@@ -31,9 +31,9 @@ class TexturedPlane: Plane<VertexWithTexture>, Texturable {
     
     let texureCoords = [float2(0, 1), float2(0, 0), float2(1, 0), float2(1, 1)]
     
-    override func render(with encoder: MTLRenderCommandEncoder, time: TimeInterval) {
+    override func render(with encoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
         encoder.setFragmentTexture(texture, index: 0)
         encoder.setFragmentTexture(maskTexture, index: 1)
-        super.render(with: encoder, time: time)
+        super.render(with: encoder, parentModelViewMatrix: parentModelViewMatrix)
     }
 }
