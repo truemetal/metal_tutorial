@@ -19,7 +19,7 @@
 		6447EA8321DD323A00DD33FF /* VertexWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6447EA8221DD323A00DD33FF /* VertexWithColor.swift */; };
 		6447EA8521DD324A00DD33FF /* VertexWithTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6447EA8421DD324A00DD33FF /* VertexWithTexture.swift */; };
 		6447EA8921DD32C100DD33FF /* TexturedPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6447EA8821DD32C100DD33FF /* TexturedPlane.swift */; };
-		6447EA8B21DD337F00DD33FF /* TexturedPlaneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6447EA8A21DD337F00DD33FF /* TexturedPlaneScene.swift */; };
+		6447EA8B21DD337F00DD33FF /* ZombiePlaneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6447EA8A21DD337F00DD33FF /* ZombiePlaneScene.swift */; };
 		6447EA8D21DD351A00DD33FF /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6447EA8C21DD351A00DD33FF /* Texturable.swift */; };
 		6447EA9121DD3CA400DD33FF /* TexturedShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6447EA9021DD3CA400DD33FF /* TexturedShaders.metal */; };
 		6461815721891C5900E3B89D /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6461815621891C5900E3B89D /* Renderer.swift */; };
@@ -52,7 +52,7 @@
 		6447EA8221DD323A00DD33FF /* VertexWithColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexWithColor.swift; sourceTree = "<group>"; };
 		6447EA8421DD324A00DD33FF /* VertexWithTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexWithTexture.swift; sourceTree = "<group>"; };
 		6447EA8821DD32C100DD33FF /* TexturedPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturedPlane.swift; sourceTree = "<group>"; };
-		6447EA8A21DD337F00DD33FF /* TexturedPlaneScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturedPlaneScene.swift; sourceTree = "<group>"; };
+		6447EA8A21DD337F00DD33FF /* ZombiePlaneScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZombiePlaneScene.swift; sourceTree = "<group>"; };
 		6447EA8C21DD351A00DD33FF /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		6447EA9021DD3CA400DD33FF /* TexturedShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = TexturedShaders.metal; sourceTree = "<group>"; };
 		6461815621891C5900E3B89D /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 			children = (
 				649FFE0621DC0B5E00C4CEB7 /* GradientPlaneScene.swift */,
 				6493B1C321DE1E68003CE6C3 /* MultiplePlanesScene.swift */,
-				6447EA8A21DD337F00DD33FF /* TexturedPlaneScene.swift */,
+				6447EA8A21DD337F00DD33FF /* ZombiePlaneScene.swift */,
 				649FFDFA21DBD9AD00C4CEB7 /* ColoredPlane.swift */,
 				6447EA8821DD32C100DD33FF /* TexturedPlane.swift */,
 			);
@@ -259,7 +259,7 @@
 				6447EA9121DD3CA400DD33FF /* TexturedShaders.metal in Sources */,
 				649FFDFB21DBD9AD00C4CEB7 /* ColoredPlane.swift in Sources */,
 				6493B1B921DE1043003CE6C3 /* MTLDevice+MakeBuffer.swift in Sources */,
-				6447EA8B21DD337F00DD33FF /* TexturedPlaneScene.swift in Sources */,
+				6447EA8B21DD337F00DD33FF /* ZombiePlaneScene.swift in Sources */,
 				649FFE0721DC0B5E00C4CEB7 /* GradientPlaneScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

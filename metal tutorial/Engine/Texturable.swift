@@ -14,7 +14,7 @@ protocol Texturable {
 
 extension Texturable {
     
-    func createTexture(withImageName n: String, device: MTLDevice) -> MTLTexture? {
+    static func createTexture(withImageName n: String, device: MTLDevice) -> MTLTexture? {
         guard let url = Bundle.main.url(forResource: n, withExtension: nil),
             let texture = try? MTKTextureLoader(device: device).newTexture(URL: url, options: [.origin : MTKTextureLoader.Origin.bottomLeft]) else { return nil }
 

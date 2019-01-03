@@ -28,6 +28,6 @@ class ViewController: UIViewController {
         fpsCalculator.updateFPSBlock = { [weak self] in self?.lblFPS.text = "\($0)" }
         renderer.didDrawFrameBlock = { [weak self] in self?.fpsCalculator.didDisplayFrame() }
         
-        renderer.scene = GradientPlaneScene(device: renderer.device, size: view.bounds.size)
+        renderer.scene = ZombiePlaneScene(device: renderer.device, size: view.bounds.size)
     }
 }

@@ -20,7 +20,7 @@ struct TexturedVertexOut {
 };
 
 vertex TexturedVertexOut noop_textured_vertex_shader(const TexturedVertexIn vertexIn [[ stage_in ]],
-                                    uint vertexId [[ vertex_id ]]) {
+                                                     uint vertexId [[ vertex_id ]]) {
     TexturedVertexOut res;
     res.position = vertexIn.position;
     res.textureCoord = vertexIn.textureCoord;
@@ -28,5 +28,13 @@ vertex TexturedVertexOut noop_textured_vertex_shader(const TexturedVertexIn vert
 }
 
 fragment float4 textured_fragment_shader(TexturedVertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]]) {
+    float4 color = texture.sample(sampler2d, vertexIn.textureCoord);
+    if (color.a == 0) discard_fragment();
+    return color;
+}
+
+fragment float4 masked_textured_fragment_shader(TexturedVertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]], texture2d<float> mask [[ texture(1) ]]) {
+    float4 maskColor = mask.sample(sampler2d, vertexIn.textureCoord);
+    if (maskColor.a < 0.5) { discard_fragment(); }
     return texture.sample(sampler2d, vertexIn.textureCoord);
 }
