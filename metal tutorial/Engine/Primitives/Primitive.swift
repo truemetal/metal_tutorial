@@ -39,9 +39,10 @@ class Primitive<VertexType>: Node, Renderable where VertexType: VertexWithDescri
     func doRender(encoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard let indexBuffer = indexBuffer, let pipelineState = pipelineState else { expectationFail(); return }
         
-        encoder.setRenderPipelineState(pipelineState)
-        encoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         encoder.setVertexBytes(ModelConstants(modelViewMatrix: modelViewMatrix), index: 1)
+        encoder.setRenderPipelineState(pipelineState)
+        
+        encoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         encoder.drawIndexedPrimitives(type: .triangle, indexCount: indecies.count, indexType: .uint32, indexBuffer: indexBuffer, indexBufferOffset: 0)
     }
 }

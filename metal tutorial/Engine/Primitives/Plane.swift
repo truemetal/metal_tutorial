@@ -20,8 +20,8 @@ class Plane: Primitive<Vertex>, Texturable {
     var maskTexture: MTLTexture? = nil
     
     convenience init(device: MTLDevice, textureImageName: String, maskImageName: String? = nil) {
-        let texture = Plane.createTexture(withImageName: textureImageName, device: device)
-        let maskTexture = maskImageName.flatMap { Plane.createTexture(withImageName: $0, device: device) }
+        let texture = Plane.createTexture(withImageName: textureImageName, device: device).valOrExpFail
+        let maskTexture = maskImageName.flatMap { Plane.createTexture(withImageName: $0, device: device).valOrExpFail }
         self.init(device: device, texture: texture, maskTexture: maskTexture)
     }
     
