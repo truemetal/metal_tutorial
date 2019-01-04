@@ -20,7 +20,7 @@ class SunScene: Scene {
         camera.position.z = -6
     }
     
-    lazy var model = Model(device: device, modelName: "sun")
+    lazy var model = Model(device: device, modelName: "8bitSun")
     
     override func animate(time: TimeInterval) {
         model.rotation.y = time.fl

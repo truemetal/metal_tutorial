@@ -50,5 +50,3 @@ extension ViewController: UIGestureRecognizerDelegate {
         return true
     }
 }
-
-

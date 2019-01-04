@@ -14,6 +14,8 @@
 		641F97F5217E8DF6002BD28B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641F97F3217E8DF6002BD28B /* Main.storyboard */; };
 		641F97F7217E8DF9002BD28B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 641F97F6217E8DF9002BD28B /* Assets.xcassets */; };
 		641F97FA217E8DF9002BD28B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641F97F8217E8DF9002BD28B /* LaunchScreen.storyboard */; };
+		6421787821E021ED00FD9824 /* R2D2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 6421787721E021ED00FD9824 /* R2D2.obj */; };
+		6421787A21E021FF00FD9824 /* R2D2Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6421787921E021FF00FD9824 /* R2D2Scene.swift */; };
 		6429D89A21DFE2DD00C1618A /* VertexWithDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6429D89921DFE2DD00C1618A /* VertexWithDescriptor.swift */; };
 		6447EA7F21DD317600DD33FF /* picture-frame-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 6447EA7C21DD317600DD33FF /* picture-frame-mask.png */; };
 		6447EA8021DD317600DD33FF /* picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 6447EA7D21DD317600DD33FF /* picture-frame.png */; };
@@ -39,6 +41,9 @@
 		646D5C0921E00F5000E63B1B /* HumanScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D5C0821E00F5000E63B1B /* HumanScene.swift */; };
 		646D5C0B21E0107800E63B1B /* CubeModelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D5C0A21E0107800E63B1B /* CubeModelScene.swift */; };
 		646D5C0D21E010E700E63B1B /* SunScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D5C0C21E010E700E63B1B /* SunScene.swift */; };
+		646D5C0F21E018C900E63B1B /* 8bitSun.obj in Resources */ = {isa = PBXBuildFile; fileRef = 646D5C0E21E018C900E63B1B /* 8bitSun.obj */; };
+		646D5C1121E01CBD00E63B1B /* naboo complex.obj in Resources */ = {isa = PBXBuildFile; fileRef = 646D5C1021E01CBD00E63B1B /* naboo complex.obj */; };
+		646D5C1321E01CCC00E63B1B /* NabooScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D5C1221E01CCC00E63B1B /* NabooScene.swift */; };
 		6474021A21DE3CA6002F033E /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6474021921DE3CA6002F033E /* MatrixMath.swift */; };
 		6474021C21DE4245002F033E /* ModelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6474021B21DE4245002F033E /* ModelConstants.swift */; };
 		6474021E21DE43C3002F033E /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6474021D21DE43C3002F033E /* Shaders.metal */; };
@@ -68,6 +73,8 @@
 		641F97F6217E8DF9002BD28B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		641F97F9217E8DF9002BD28B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		641F97FB217E8DF9002BD28B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6421787721E021ED00FD9824 /* R2D2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = R2D2.obj; sourceTree = "<group>"; };
+		6421787921E021FF00FD9824 /* R2D2Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R2D2Scene.swift; sourceTree = "<group>"; };
 		6429D89921DFE2DD00C1618A /* VertexWithDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexWithDescriptor.swift; sourceTree = "<group>"; };
 		6447EA7C21DD317600DD33FF /* picture-frame-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame-mask.png"; sourceTree = "<group>"; };
 		6447EA7D21DD317600DD33FF /* picture-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame.png"; sourceTree = "<group>"; };
@@ -93,6 +100,9 @@
 		646D5C0821E00F5000E63B1B /* HumanScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanScene.swift; sourceTree = "<group>"; };
 		646D5C0A21E0107800E63B1B /* CubeModelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeModelScene.swift; sourceTree = "<group>"; };
 		646D5C0C21E010E700E63B1B /* SunScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunScene.swift; sourceTree = "<group>"; };
+		646D5C0E21E018C900E63B1B /* 8bitSun.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 8bitSun.obj; sourceTree = "<group>"; };
+		646D5C1021E01CBD00E63B1B /* naboo complex.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "naboo complex.obj"; sourceTree = "<group>"; };
+		646D5C1221E01CCC00E63B1B /* NabooScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NabooScene.swift; sourceTree = "<group>"; };
 		6474021921DE3CA6002F033E /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 		6474021B21DE4245002F033E /* ModelConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConstants.swift; sourceTree = "<group>"; };
 		6474021D21DE43C3002F033E /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
@@ -193,6 +203,8 @@
 		646D5BEA21E0043C00E63B1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6421787721E021ED00FD9824 /* R2D2.obj */,
+				646D5C1021E01CBD00E63B1B /* naboo complex.obj */,
 				646D5BEB21E0043C00E63B1B /* mushroom */,
 				646D5BEE21E0043C00E63B1B /* humanFigure */,
 				646D5BF021E0043C00E63B1B /* texturedCube */,
@@ -230,6 +242,7 @@
 		646D5BF421E0043C00E63B1B /* Sun Model */ = {
 			isa = PBXGroup;
 			children = (
+				646D5C0E21E018C900E63B1B /* 8bitSun.obj */,
 				646D5BF521E0043C00E63B1B /* sun.obj */,
 			);
 			path = "Sun Model";
@@ -288,6 +301,8 @@
 				646D5C0821E00F5000E63B1B /* HumanScene.swift */,
 				646D5C0A21E0107800E63B1B /* CubeModelScene.swift */,
 				646D5C0C21E010E700E63B1B /* SunScene.swift */,
+				6421787921E021FF00FD9824 /* R2D2Scene.swift */,
+				646D5C1221E01CCC00E63B1B /* NabooScene.swift */,
 				649FFE0621DC0B5E00C4CEB7 /* GradientPlaneScene.swift */,
 				64FCB64221DE87D600CDD5DA /* CubeScene.swift */,
 				6447EA8A21DD337F00DD33FF /* ZombiePlaneScene.swift */,
@@ -375,10 +390,13 @@
 				6447EA7F21DD317600DD33FF /* picture-frame-mask.png in Resources */,
 				646D5BFA21E0043D00E63B1B /* texturedCube.png in Resources */,
 				646D5BF921E0043D00E63B1B /* texturedCube.blend in Resources */,
+				646D5C1121E01CBD00E63B1B /* naboo complex.obj in Resources */,
 				646D5BFC21E0043D00E63B1B /* sun.obj in Resources */,
+				6421787821E021ED00FD9824 /* R2D2.obj in Resources */,
 				646D5BFB21E0043D00E63B1B /* texturedCube.obj in Resources */,
 				641F97F5217E8DF6002BD28B /* Main.storyboard in Resources */,
 				646D5BF721E0043D00E63B1B /* mushroom.obj in Resources */,
+				646D5C0F21E018C900E63B1B /* 8bitSun.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,10 +424,12 @@
 				646D5C0721E00E8A00E63B1B /* MTKMesh+GetMeshesByLoadingModelWithName.swift in Sources */,
 				649FFDFE21DBDC5C00C4CEB7 /* Scene.swift in Sources */,
 				6493B1BB21DE10EC003CE6C3 /* CGFloat+Float+Int+Double.swift in Sources */,
+				646D5C1321E01CCC00E63B1B /* NabooScene.swift in Sources */,
 				646D5C0B21E0107800E63B1B /* CubeModelScene.swift in Sources */,
 				649FFDF721DBD17A00C4CEB7 /* FPSCalculator.swift in Sources */,
 				6493B1C221DE1944003CE6C3 /* Primitive.swift in Sources */,
 				646D5C0521E00E3000E63B1B /* MDLVertexDescriptor+MDLVertexDescriptor+VertexDescriptorForOBJModels.swift in Sources */,
+				6421787A21E021FF00FD9824 /* R2D2Scene.swift in Sources */,
 				641F97F0217E8DF6002BD28B /* AppDelegate.swift in Sources */,
 				6447EA8921DD32C100DD33FF /* Plane.swift in Sources */,
 				646D5C0921E00F5000E63B1B /* HumanScene.swift in Sources */,
