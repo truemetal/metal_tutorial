@@ -1,27 +1,27 @@
 //
-//  MushroomScene.swift
+//  CubeModelScene.swift
 //  metal tutorial
 //
-//  Created by Dan Pashchenko on 1/4/19.
+//  Created by Dan Pashchenko on 1/5/19.
 //  Copyright © 2019 iOS-engineer. All rights reserved.
 //
 
 import MetalKit
 
-class MushroomScene: Scene {
+class CubeModelScene: Scene {
     
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
         
         children.append(model)
-        model.position.y = -1.5
         
         camera.position.z = -6
     }
     
-    lazy var model = Model(device: device, modelName: "mushroom")
+    lazy var model = Model(device: device, modelName: "texturedCube")
     
     override func animate(time: TimeInterval) {
         model.rotation.y = time.fl
     }
 }
+
