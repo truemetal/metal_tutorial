@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         lblFPS.text = ""
         fpsCalculator.updateFPSBlock = { [weak self] in self?.lblFPS.text = "\($0)" }
         renderer.didDrawFrameBlock = { [weak self] in self?.fpsCalculator.didDisplayFrame() }
-        
+
         renderer.scene = CubeScene(device: renderer.device, size: view.bounds.size)
         metalView.clearColor = MTLClearColor(red: 0, green: 0.4, blue: 0.21, alpha: 1)
         

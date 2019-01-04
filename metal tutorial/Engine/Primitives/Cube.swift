@@ -8,10 +8,11 @@
 
 import MetalKit
 
-class Cube: Primitive<VertexWithColor> {
+class Cube: Primitive<Vertex> {
 
     override func setVerteciesAndIndecies() {
-        vertecies = zip(positions, colors).map { VertexWithColor(position: $0, color: $1) }
+        let inputs = zip(zip(positions, colors), textureCoords).map { ($0.0, $0.1, $1) }
+        vertecies = inputs.map { Vertex(position: $0, color: $1, textureCoord: $2) }
 
         indecies = [
             0, 1, 2,    0, 2, 3,    // front
@@ -28,6 +29,11 @@ class Cube: Primitive<VertexWithColor> {
         float3(-1, 1, -1), float3(-1, -1, -1), float3(1, -1, -1), float3(1, 1, -1),
         ]
 
+    let textureCoords: [float2] = [
+        float2(0, 1), float2(0, 0), float2(1, 0), float2(1, 1),
+        float2(0, 1), float2(0, 0), float2(1, 0), float2(1, 1)
+    ]
+    
     let colors: [float4] = [
         float4(1, 0, 0, 1), float4(0, 1, 0, 1), float4(0, 0, 1, 1), float4(1, 0, 1, 1),
         float4(0, 0, 1, 1), float4(0, 1, 0, 1), float4(1, 0, 0, 1), float4(1, 0, 1, 1),

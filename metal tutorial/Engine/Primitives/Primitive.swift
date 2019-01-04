@@ -10,7 +10,7 @@ import MetalKit
 
 class Primitive<VertexType>: Node, Renderable where VertexType: VertexWithDescriptor {
     
-    var vertexFunctionName: String { return "noop_vertex_shader" }
+    var vertexFunctionName: String { return "vertex_shader" }
     var fragmentFunctionName: String { return "noop_fragment_shader" }
     var vertexDescriptor: MTLVertexDescriptor { return VertexType.descriptor }
     lazy var pipelineState: MTLRenderPipelineState? = buildPipelineState(withDevice: device)!
