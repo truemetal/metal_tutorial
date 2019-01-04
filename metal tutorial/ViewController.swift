@@ -26,9 +26,34 @@ class ViewController: UIViewController {
         
         renderer.scene = CubeScene(device: renderer.device, size: view.bounds.size)
         metalView.depthStencilPixelFormat = .depth32Float
+        
+        metalView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGesture(g:))))
+        metalView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture(g:))))
+        metalView.gestureRecognizers?.forEach { $0.delegate = self }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         renderer.scene?.size = size
     }
+    
+    @objc func panGesture(g: UIPanGestureRecognizer) {
+        let t = g.translation(in: metalView)
+        g.setTranslation(.zero, in: metalView)
+        
+        renderer.scene?.camera.rotation.y -= t.x.fl.degreesToRadians
+        renderer.scene?.camera.rotation.x -= t.y.fl.degreesToRadians
+    }
+    
+    @objc func pinchGesture(g: UIPinchGestureRecognizer) {
+        renderer.scene?.camera.position.z /= g.scale.fl
+        g.scale = 1
+    }
 }
+
+extension ViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+
+

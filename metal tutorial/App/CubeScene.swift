@@ -13,14 +13,18 @@ class CubeScene: Scene {
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
 
+        children.append(zombieBackPlane)
         children.append(zombiePlane)
         children.append(cube)
         
         zombiePlane.scale = float3(3)
         zombiePlane.position.z = -3
+        zombieBackPlane.scale = float3(3)
+        zombieBackPlane.position.z = -3.01
+        zombieBackPlane.rotation.y = .pi
         
-        camera.position.y = -1
-        camera.position.x = 1
+//        camera.position.y = -1
+//        camera.position.x = 1
         camera.position.z = -6
         camera.rotation.x = -45.fl.degreesToRadians
         camera.rotation.y = -45.fl.degreesToRadians
@@ -28,6 +32,7 @@ class CubeScene: Scene {
     
     lazy var cube = Cube(device: device)
     lazy var zombiePlane = TexturedPlane(device: device, textureImageName: "picture.png")!
+    lazy var zombieBackPlane = TexturedPlane(device: device, textureImageName: "picture.png")!
     
     override func animate(time: TimeInterval) {
         cube.rotation.y = time.fl
