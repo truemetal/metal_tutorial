@@ -19,8 +19,8 @@ class Plane: Primitive<Vertex>, Texturable {
     var texture: MTLTexture? = nil
     var maskTexture: MTLTexture? = nil
     
-    convenience init?(device: MTLDevice, textureImageName: String? = nil, maskImageName: String? = nil) {
-        let texture = textureImageName.flatMap { Plane.createTexture(withImageName: $0, device: device) }
+    convenience init(device: MTLDevice, textureImageName: String, maskImageName: String? = nil) {
+        let texture = Plane.createTexture(withImageName: textureImageName, device: device)
         let maskTexture = maskImageName.flatMap { Plane.createTexture(withImageName: $0, device: device) }
         self.init(device: device, texture: texture, maskTexture: maskTexture)
     }
@@ -32,7 +32,7 @@ class Plane: Primitive<Vertex>, Texturable {
     }
     
     override func setVerteciesAndIndecies() {
-        let inputs = zip(zip(positions, colors), texureCoords).map { ($0.0, $0.1, $1) }
+        let inputs = zip(zip(positions, colors), textureCoords).map { ($0.0, $0.1, $1) }
         vertecies = inputs.map { Vertex(position: $0, color: $1, textureCoord: $2) }
         indecies = [0, 1, 2, 0, 2, 3]
     }
@@ -45,7 +45,7 @@ class Plane: Primitive<Vertex>, Texturable {
         float4(1, 0, 0, 1), float4(0, 1, 0, 1), float4(0, 0, 1, 1), float4(1, 0, 1, 1)
     ]
     
-    let texureCoords = [
+    let textureCoords = [
         float2(0, 1), float2(0, 0), float2(1, 0), float2(1, 1)
     ]
     

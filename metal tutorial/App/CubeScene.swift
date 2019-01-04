@@ -31,8 +31,8 @@ class CubeScene: Scene {
     }
     
     lazy var cube = Cube(device: device)
-    lazy var zombiePlane = Plane(device: device, textureImageName: "picture.png")!
-    lazy var zombieBackPlane = Plane(device: device, textureImageName: "picture.png")!
+    lazy var zombiePlane = Plane(device: device, textureImageName: "picture.png")
+    lazy var zombieBackPlane = Plane(device: device, textureImageName: "picture.png")
     
     override func animate(time: TimeInterval) {
         cube.rotation.y = time.fl

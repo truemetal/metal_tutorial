@@ -13,21 +13,20 @@ class ZombiePlaneScene: Scene {
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
         
-        guard let zombiePlane = zombiePlane else { expectationFail(); return }
         children.append(zombiePlane)
         
         zombiePlane.position.y = -0.5
         
         let quad2 = Plane(device: device, textureImageName: "picture.png")
-        quad2?.position.y = 1.5
-        quad2?.scale = float3(0.5)
-        quad2.map { zombiePlane.children.append($0) }
+        quad2.position.y = 1.5
+        quad2.scale = float3(0.5)
+        zombiePlane.children.append(quad2)
     }
     
     lazy var zombiePlane = Plane(device: device, textureImageName: "picture.png")
     
     override func animate(time: TimeInterval) {
-        zombiePlane?.rotation.y = time.fl
-        zombiePlane?.rotation.z = time.fl
+        zombiePlane.rotation.y = time.fl
+        zombiePlane.rotation.z = time.fl
     }
 }
