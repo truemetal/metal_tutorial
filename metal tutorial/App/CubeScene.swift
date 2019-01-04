@@ -12,7 +12,8 @@ class CubeScene: Scene {
     
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
-
+        clearColor = MTLClearColor(red: 0, green: 0.4, blue: 0.21, alpha: 1)
+        
         children.append(zombieBackPlane)
         children.append(zombiePlane)
         children.append(cube)
@@ -23,8 +24,8 @@ class CubeScene: Scene {
         zombieBackPlane.position.z = -3.01
         zombieBackPlane.rotation.y = .pi
         
-//        camera.position.y = -1
-//        camera.position.x = 1
+        //        camera.position.y = -1
+        //        camera.position.x = 1
         camera.position.z = -6
         camera.rotation.x = -45.fl.degreesToRadians
         camera.rotation.y = -45.fl.degreesToRadians

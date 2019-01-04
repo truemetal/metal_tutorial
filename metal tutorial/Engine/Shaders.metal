@@ -11,6 +11,7 @@ using namespace metal;
 
 struct ModelConstants {
     float4x4 modelViewMatrix;
+    float4 materialColor;
 };
 
 struct SceneConstants {
@@ -27,6 +28,7 @@ struct VertexOut {
     float4 position [[ position ]];
     float4 color;
     float2 textureCoord;
+    float4 materialColor;
 };
 
 vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants &modelConstants [[ buffer(1) ]], constant SceneConstants &sceneConstants [[ buffer(2) ]]) {
@@ -34,23 +36,28 @@ vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant 
     res.position = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix * vertexIn.position;
     res.color = vertexIn.color;
     res.textureCoord = vertexIn.textureCoord;
+    res.materialColor = modelConstants.materialColor;
     return res;
 }
 
 fragment float4 textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]]) {
     float4 color = texture.sample(sampler2d, vertexIn.textureCoord);
     if (color.a == 0) discard_fragment();
-    return color;
+    return color * vertexIn.materialColor;
 }
 
 fragment float4 masked_textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]], texture2d<float> mask [[ texture(1) ]]) {
     float4 maskColor = mask.sample(sampler2d, vertexIn.textureCoord);
     if (maskColor.a < 0.5) { discard_fragment(); }
-    return texture.sample(sampler2d, vertexIn.textureCoord);
+    return texture.sample(sampler2d, vertexIn.textureCoord) * vertexIn.materialColor;
 }
 
 fragment half4 noop_fragment_shader(VertexOut vertexIn [[ stage_in ]]) {
     return half4(vertexIn.color);
+}
+
+fragment half4 material_color_fragment_shader(VertexOut vertexIn [[ stage_in ]]) {
+    return half4(vertexIn.materialColor);
 }
 
 fragment half4 grayscale_fragment_shader(VertexOut vertexIn [[ stage_in ]]) {

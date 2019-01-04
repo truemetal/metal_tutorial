@@ -24,6 +24,7 @@ class Scene: Node {
     var device: MTLDevice
     var size: CGSize { didSet { camera.aspect = size.aspectRatio.fl } }
     var camera = Camera()
+    var clearColor: MTLClearColor = MTLClearColor(red: 1, green: 1, blue: 1, alpha: 1)
     
     let startTime = Date()
     func animate(time: TimeInterval) { }

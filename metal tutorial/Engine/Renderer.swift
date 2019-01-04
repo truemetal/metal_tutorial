@@ -57,6 +57,7 @@ extension Renderer: MTKViewDelegate {
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable, let descriptor = view.currentRenderPassDescriptor, let buffer = commandQueue.makeCommandBuffer() else { expectationFail(); return }
         
+        scene.map { view.clearColor = $0.clearColor }
         renderScene(with: buffer, descriptor: descriptor)
         buffer.present(drawable)
         buffer.commit()

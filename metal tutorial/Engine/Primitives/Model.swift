@@ -18,7 +18,7 @@ class Model: Node, Renderable, Texturable {
     
     var fragmentFunctionName: String {
         if texture != nil { return "textured_fragment_shader" }
-        return "noop_fragment_shader"
+        return "material_color_fragment_shader"
     }
     
     var texture: MTLTexture?
@@ -34,7 +34,7 @@ class Model: Node, Renderable, Texturable {
     
     func doRender(encoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard let pipelineState = pipelineState else { expectationFail(); return }
-        encoder.setVertexBytes(ModelConstants(modelViewMatrix: modelViewMatrix), index: 1)
+        encoder.setVertexBytes(ModelConstants(modelViewMatrix: modelViewMatrix, materialColor: materialColor), index: 1)
         encoder.setRenderPipelineState(pipelineState)
         texture.map { encoder.setFragmentTexture($0, index: 0) }
         

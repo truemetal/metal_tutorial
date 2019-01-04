@@ -13,6 +13,8 @@ class SunScene: Scene {
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
         
+        clearColor = MTLClearColor(red: 0.66, green: 0.9, blue: 0.96, alpha: 1.0)
+        model.materialColor = float4(1, 1, 0, 1)
         children.append(model)
         
         camera.position.z = -6

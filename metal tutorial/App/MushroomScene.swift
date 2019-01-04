@@ -12,6 +12,7 @@ class MushroomScene: Scene {
     
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
+        clearColor = MTLClearColor(red: 0, green: 0.4, blue: 0.21, alpha: 1)
         
         children.append(model)
         model.position.y = -1.5
