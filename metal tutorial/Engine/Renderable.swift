@@ -23,6 +23,7 @@ extension Renderable {
         guard let library = device.makeDefaultLibrary() else { expectationFail(); return nil }
         
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
+        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         pipelineDescriptor.vertexDescriptor = vertexDescriptor
         pipelineDescriptor.vertexFunction = library.makeFunction(name: vertexFunctionName)
         pipelineDescriptor.fragmentFunction = library.makeFunction(name: fragmentFunctionName)

@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         renderer.didDrawFrameBlock = { [weak self] in self?.fpsCalculator.didDisplayFrame() }
         
         renderer.scene = CubeScene(device: renderer.device, size: view.bounds.size)
+        metalView.depthStencilPixelFormat = .depth32Float
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
