@@ -29,6 +29,6 @@ class ViewController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        (renderer.scene as? CubeScene)?.aspectRatio = size.aspectRatio.fl
+        renderer.scene?.size = size
     }
 }

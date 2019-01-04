@@ -70,7 +70,7 @@ extension Renderer: MTKViewDelegate {
         encoder.setCullMode(.back)
         encoder.setFrontFacing(.counterClockwise)
         encoder.setFragmentSamplerState(samplerState, index: 0)
-        scene.render(with: encoder, parentModelViewMatrix: matrix_identity_float4x4)
+        scene.render(with: encoder)
         encoder.endEncoding()
     }
 }

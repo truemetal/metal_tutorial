@@ -14,16 +14,26 @@ class Scene: Node {
     init(device: MTLDevice, size: CGSize) {
         self.device = device
         self.size = size
+        super.init()
+        
+        camera.aspect = size.aspectRatio.fl
+        camera.position.z = -4
+        children.append(camera)
     }
     
     var device: MTLDevice
-    var size: CGSize
+    var size: CGSize { didSet { camera.aspect = size.aspectRatio.fl } }
+    var camera = Camera()
     
     let startTime = Date()
     func animate(time: TimeInterval) { }
     
     override func render(with encoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
+        expectationFail()
+    }
+    
+    func render(with encoder: MTLRenderCommandEncoder) {
         animate(time: Date().timeIntervalSince(startTime))
-        super.render(with: encoder, parentModelViewMatrix: parentModelViewMatrix)
+        super.render(with: encoder, parentModelViewMatrix: matrix_multiply(camera.projectionMatrix, camera.viewMatrix))
     }
 }
