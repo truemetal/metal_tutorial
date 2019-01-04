@@ -135,6 +135,28 @@
 			path = "metal tutorial";
 			sourceTree = "<group>";
 		};
+		6429D89721DFDE6700C1618A /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				6429D89821DFDEB200C1618A /* Logic */,
+				640FF94721DFAABC00A4AFC4 /* Camera.swift */,
+				649FFDF821DBD8B700C4CEB7 /* Node.swift */,
+				649FFDFD21DBDC5C00C4CEB7 /* Scene.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		6429D89821DFDEB200C1618A /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				649FFE0121DC064700C4CEB7 /* Renderable.swift */,
+				6447EA8C21DD351A00DD33FF /* Texturable.swift */,
+				6474021B21DE4245002F033E /* ModelConstants.swift */,
+				640FF94921DFB2A200A4AFC4 /* SceneConstants.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 		6447EA7B21DD317600DD33FF /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,14 +207,8 @@
 				6493B1BC21DE16D9003CE6C3 /* Vertecies */,
 				6474021F21DE43F2002F033E /* Metal code */,
 				64FCB63F21DE845A00CDD5DA /* Primitives */,
+				6429D89721DFDE6700C1618A /* Nodes */,
 				6461815621891C5900E3B89D /* Renderer.swift */,
-				640FF94721DFAABC00A4AFC4 /* Camera.swift */,
-				649FFE0121DC064700C4CEB7 /* Renderable.swift */,
-				6447EA8C21DD351A00DD33FF /* Texturable.swift */,
-				649FFDF821DBD8B700C4CEB7 /* Node.swift */,
-				649FFDFD21DBDC5C00C4CEB7 /* Scene.swift */,
-				6474021B21DE4245002F033E /* ModelConstants.swift */,
-				640FF94921DFB2A200A4AFC4 /* SceneConstants.swift */,
 				6474021921DE3CA6002F033E /* MatrixMath.swift */,
 			);
 			path = Engine;

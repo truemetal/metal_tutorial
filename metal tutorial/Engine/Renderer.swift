@@ -30,7 +30,7 @@ class Renderer: NSObject {
         
         metalView.device = device
         metalView.delegate = self
-        metalView.clearColor = MTLClearColor(red: 0, green: 1, blue: 0, alpha: 1)
+        metalView.depthStencilPixelFormat = .depth32Float
     }
     
     lazy var samplerState: MTLSamplerState? = {
@@ -51,7 +51,7 @@ class Renderer: NSObject {
 extension Renderer: MTKViewDelegate {
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        
+        scene?.size = size
     }
     
     func draw(in view: MTKView) {

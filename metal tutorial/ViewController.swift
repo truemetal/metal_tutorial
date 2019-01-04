@@ -25,15 +25,11 @@ class ViewController: UIViewController {
         renderer.didDrawFrameBlock = { [weak self] in self?.fpsCalculator.didDisplayFrame() }
         
         renderer.scene = CubeScene(device: renderer.device, size: view.bounds.size)
-        metalView.depthStencilPixelFormat = .depth32Float
+        metalView.clearColor = MTLClearColor(red: 0, green: 0.4, blue: 0.21, alpha: 1)
         
         metalView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGesture(g:))))
         metalView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture(g:))))
         metalView.gestureRecognizers?.forEach { $0.delegate = self }
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        renderer.scene?.size = size
     }
     
     @objc func panGesture(g: UIPanGestureRecognizer) {
