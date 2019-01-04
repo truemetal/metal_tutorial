@@ -34,6 +34,7 @@ class Scene: Node {
     
     func render(with encoder: MTLRenderCommandEncoder) {
         animate(time: Date().timeIntervalSince(startTime))
-        super.render(with: encoder, parentModelViewMatrix: matrix_multiply(camera.projectionMatrix, camera.viewMatrix))
+        encoder.setVertexBytes(SceneConstants(projectionMatrix: camera.projectionMatrix), index: 2)
+        super.render(with: encoder, parentModelViewMatrix: camera.viewMatrix)
     }
 }

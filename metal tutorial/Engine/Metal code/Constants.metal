@@ -16,3 +16,7 @@ struct RenderConstants {
 struct ModelConstants {
     float4x4 modelViewMatrix;
 };
+
+struct SceneConstants {
+    float4x4 projectionMatrix;
+};

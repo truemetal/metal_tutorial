@@ -20,27 +20,10 @@ struct VertexOut {
     float4 color;
 };
 
-vertex VertexOut noop_vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants &modelConstants [[ buffer(1) ]]) {
+vertex VertexOut noop_vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants &modelConstants [[ buffer(1) ]], constant SceneConstants &sceneConstants [[ buffer(2) ]]) {
     VertexOut res;
-    res.position = modelConstants.modelViewMatrix * vertexIn.position;
+    res.position = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix * vertexIn.position;
     res.color = vertexIn.color;
-    return res;
-}
-
-vertex VertexOut color_move_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
-                                          constant RenderConstants &constants [[ buffer(1) ]],
-                                          uint vertexId [[ vertex_id ]]) {
-    VertexOut res;
-    res.position = vertexIn.position;
-    res.color = vertexIn.color;
-    
-    switch (vertexId) {
-        case 0: res.color[0] += constants.xOffset / 2;
-        case 1: res.color[1] -= constants.xOffset / 2;
-        case 2: res.color[2] += constants.xOffset / 2;
-        case 3: res.color[1] += constants.xOffset / 2;
-        default: break;
-    }
     return res;
 }
 
