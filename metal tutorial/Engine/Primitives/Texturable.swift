@@ -16,7 +16,7 @@ extension Texturable {
     
     static func createTexture(withImageName n: String, device: MTLDevice) -> MTLTexture? {
         guard let url = Bundle.main.url(forResource: n, withExtension: nil),
-            let texture = try? MTKTextureLoader(device: device).newTexture(URL: url, options: [.origin : MTKTextureLoader.Origin.bottomLeft]) else { return nil }
+            let texture = try? MTKTextureLoader(device: device).newTexture(URL: url, options: [.origin : MTKTextureLoader.Origin.bottomLeft]) else { expectationFail(); return nil }
 
         return texture
     }
