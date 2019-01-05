@@ -17,7 +17,7 @@ class Model: Node, Renderable, Texturable {
     var vertexFunctionName: String { return "vertex_shader" }
     
     var fragmentFunctionName: String {
-        if texture != nil { return "textured_fragment_shader" }
+        if texture != nil { return "lit_textured_fragment_shader" }
         return "material_color_fragment_shader"
     }
     

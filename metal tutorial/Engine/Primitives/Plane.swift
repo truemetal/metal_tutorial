@@ -12,7 +12,7 @@ class Plane: Primitive<Vertex>, Texturable {
     
     override var fragmentFunctionName: String {
         if texture != nil, maskTexture != nil { return "masked_textured_fragment_shader" }
-        else if texture != nil { return "textured_fragment_shader" }
+        else if texture != nil { return "lit_textured_fragment_shader" }
         return super.fragmentFunctionName
     }
     

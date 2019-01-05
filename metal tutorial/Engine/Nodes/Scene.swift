@@ -25,6 +25,7 @@ class Scene: Node {
     var size: CGSize { didSet { camera.aspect = size.aspectRatio.fl } }
     var camera = Camera()
     var clearColor: MTLClearColor = MTLClearColor(red: 1, green: 1, blue: 1, alpha: 1)
+    var light: Light = Light(ambientLightColor: float3(1), ambientLightIntensity: 1)
     
     let startTime = Date()
     func animate(time: TimeInterval) { }
@@ -36,6 +37,7 @@ class Scene: Node {
     func render(with encoder: MTLRenderCommandEncoder) {
         animate(time: Date().timeIntervalSince(startTime))
         encoder.setVertexBytes(SceneConstants(projectionMatrix: camera.projectionMatrix), index: 2)
+        encoder.setFragmentBytes(light, index: 0)
         super.render(with: encoder, parentModelViewMatrix: camera.viewMatrix)
     }
 }
