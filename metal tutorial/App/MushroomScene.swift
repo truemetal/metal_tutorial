@@ -20,6 +20,9 @@ class MushroomScene: Scene {
         light.diffuseIntensity = 0.8
         
         children.append(model)
+        
+        model.specularIntensity = 1
+        model.shininess = 8
         model.position.y = -1.5
         
         camera.position.z = -6

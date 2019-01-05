@@ -40,7 +40,7 @@ class Model: Node, Renderable, Texturable {
     
     func doRender(encoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard let pipelineState = pipelineState else { expectationFail(); return }
-        encoder.setVertexBytes(ModelConstants(modelViewMatrix: modelViewMatrix, materialColor: materialColor), index: 1)
+        encoder.setVertexBytes(modelConstants(withModelViewMatrix: modelViewMatrix), index: 1)
         encoder.setRenderPipelineState(pipelineState)
         texture.map { encoder.setFragmentTexture($0, index: 0) }
         
