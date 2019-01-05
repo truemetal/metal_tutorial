@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         fpsCalculator.updateFPSBlock = { [weak self] in self?.lblFPS.text = "\($0)" }
         renderer.didDrawFrameBlock = { [weak self] in self?.fpsCalculator.didDisplayFrame() }
 
-        renderer.scene = SunScene(device: renderer.device, size: view.bounds.size)
+        setScene()
         
         metalView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGesture(g:))))
         metalView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture(g:))))
@@ -43,6 +43,36 @@ class ViewController: UIViewController {
         renderer.scene?.camera.position.z /= g.scale.fl
         g.scale = 1
     }
+    
+    func setScene() {
+        renderer.scene = scenes[sceneIdx]
+        renderer.scene?.size = view.bounds.size
+    }
+    
+    @IBAction func btnPrevSceneTap() {
+        sceneIdx = sceneIdx - 1
+        if sceneIdx == -1 { sceneIdx = scenes.count - 1 }
+        setScene()
+    }
+    
+    @IBAction func btnNextSceneTap() {
+        sceneIdx = (sceneIdx + 1) % scenes.count
+        setScene()
+    }
+    
+    var sceneIdx = 0
+    
+    lazy var scenes: [Scene] = [
+        SunScene(device: renderer.device, size: view.bounds.size),
+        MushroomScene(device: renderer.device, size: view.bounds.size),
+        HumanScene(device: renderer.device, size: view.bounds.size),
+        CubeModelScene(device: renderer.device, size: view.bounds.size),
+        R2D2Scene(device: renderer.device, size: view.bounds.size),
+        NabooScene(device: renderer.device, size: view.bounds.size),
+        GradientPlaneScene(device: renderer.device, size: view.bounds.size),
+        CubeScene(device: renderer.device, size: view.bounds.size),
+        ZombiePlaneScene(device: renderer.device, size: view.bounds.size)
+    ]
 }
 
 extension ViewController: UIGestureRecognizerDelegate {
