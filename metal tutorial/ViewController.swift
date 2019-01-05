@@ -63,6 +63,7 @@ class ViewController: UIViewController {
     var sceneIdx = 0
     
     lazy var scenes: [Scene] = [
+        GreenfieldScene(device: renderer.device, size: view.bounds.size),
         CrowdScene(device: renderer.device, size: view.bounds.size),
         SunScene(device: renderer.device, size: view.bounds.size),
         MushroomScene(device: renderer.device, size: view.bounds.size),

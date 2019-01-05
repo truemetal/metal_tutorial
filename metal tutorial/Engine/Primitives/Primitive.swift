@@ -10,8 +10,11 @@ import MetalKit
 
 class Primitive<VertexType>: Node, Renderable where VertexType: VertexWithDescriptor {
     
+    enum ShaderFunction: String { case vertexColor = "noop_fragment_shader", materialColor = "material_color_fragment_shader" }
+    var shaderFunction: ShaderFunction = .materialColor
+    
     var vertexFunctionName: String { return "vertex_shader" }
-    var fragmentFunctionName: String { return "noop_fragment_shader" }
+    var fragmentFunctionName: String { return shaderFunction.rawValue }
     var vertexDescriptor: MTLVertexDescriptor { return VertexType.descriptor }
     lazy var pipelineState: MTLRenderPipelineState? = buildPipelineState(withDevice: device)!
     
