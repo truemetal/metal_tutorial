@@ -9,6 +9,8 @@
 import simd
 
 struct Light {
-    var ambientLightColor: float3
-    var ambientLightIntensity: Float
+    var color: float3 = float3(1)
+    var ambientLightIntensity: Float = 1
+    var direction: float3 = float3(1)
+    var diffuseIntensity: Float = 0
 }

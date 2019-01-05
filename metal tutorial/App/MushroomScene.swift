@@ -12,9 +12,12 @@ class MushroomScene: Scene {
     
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
+        
         clearColor = MTLClearColor(red: 0, green: 0.4, blue: 0.21, alpha: 1)
-        light.ambientLightColor = float3(0, 0, 1)
-        light.ambientLightIntensity = 0.5
+        
+        light.direction = float3(-1, -1, -1)
+        light.ambientLightIntensity = 0.2
+        light.diffuseIntensity = 0.8
         
         children.append(model)
         model.position.y = -1.5

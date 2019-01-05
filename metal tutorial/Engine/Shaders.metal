@@ -12,6 +12,7 @@ using namespace metal;
 struct ModelConstants {
     float4x4 modelViewMatrix;
     float4 materialColor;
+    float3x3 normalMatrix;
 };
 
 struct SceneConstants {
@@ -22,6 +23,7 @@ struct VertexIn {
     float4 position [[ attribute(0) ]];
     float4 color [[ attribute(1) ]];
     float2 textureCoord [[ attribute(2) ]];
+    float3 normal [[ attribute(3) ]];
 };
 
 struct VertexOut {
@@ -29,11 +31,14 @@ struct VertexOut {
     float4 color;
     float2 textureCoord;
     float4 materialColor;
+    float3 normal;
 };
 
 struct Light {
-    float3 ambientLightColor;
+    float3 color;
     float ambientLightIntensity;
+    float3 direction;
+    float diffuseIntensity;
 };
 
 inline VertexOut vertex_function(const VertexIn vertexIn, constant ModelConstants &modelConstants, constant SceneConstants &sceneConstants) {
@@ -42,6 +47,7 @@ inline VertexOut vertex_function(const VertexIn vertexIn, constant ModelConstant
     res.color = vertexIn.color;
     res.textureCoord = vertexIn.textureCoord;
     res.materialColor = modelConstants.materialColor;
+    res.normal = modelConstants.normalMatrix * vertexIn.normal;
     return res;
 }
 
@@ -54,10 +60,15 @@ vertex VertexOut instance_vertex_shader(const VertexIn vertexIn [[ stage_in ]], 
 }
 
 fragment float4 lit_textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]], constant Light &light [[ buffer(0) ]]) {
-    float4 color = texture.sample(sampler2d, vertexIn.textureCoord);
+    float4 color = vertexIn.materialColor * texture.sample(sampler2d, vertexIn.textureCoord);
     if (color.a == 0) discard_fragment();
-    float4 ambientLight = float4(light.ambientLightColor * light.ambientLightIntensity, 1);
-    return color * vertexIn.materialColor * ambientLight;
+    
+    // light
+    float3 normal = normalize(vertexIn.normal);
+    float diffuseFactor = saturate(-dot(light.direction, normal));
+    float3 diffuseLight = light.color * light.diffuseIntensity * diffuseFactor;
+    float3 ambientLight = light.color * light.ambientLightIntensity;
+    return color * float4(ambientLight + diffuseLight, 1);
 }
 
 fragment float4 textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]]) {
