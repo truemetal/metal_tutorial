@@ -12,6 +12,7 @@ struct Vertex {
     let position: float3
     let color: float4
     let textureCoord: float2
+    let normal: float3
 }
 
 // MARK: descriptor
@@ -34,6 +35,10 @@ extension Vertex: VertexWithDescriptor {
         d.attributes[2].format = .float2
         d.attributes[2].bufferIndex = 0
         d.attributes[2].offset = d.attributes[1].offset + MemoryLayout<float3>.stride
+        
+        d.attributes[3].format = .float3
+        d.attributes[3].bufferIndex = 0
+        d.attributes[3].offset = d.attributes[2].offset + MemoryLayout<float2>.stride
         
         d.layouts[0].stride = MemoryLayout<Vertex>.stride
         

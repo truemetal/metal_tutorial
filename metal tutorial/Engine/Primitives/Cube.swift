@@ -9,11 +9,13 @@
 import MetalKit
 
 class Cube: Primitive<Vertex> {
-
+    
     override func setVerteciesAndIndecies() {
+        shaderFunction = .nonLitVertexColor
+        
         let inputs = zip(zip(positions, colors), textureCoords).map { ($0.0, $0.1, $1) }
-        vertecies = inputs.map { Vertex(position: $0, color: $1, textureCoord: $2) }
-
+        vertecies = inputs.map { Vertex(position: $0, color: $1, textureCoord: $2, normal: float3(0)) }
+        
         indecies = [
             0, 1, 2,    0, 2, 3,    // front
             4, 7, 5,    5, 7, 6,    // back
@@ -23,12 +25,12 @@ class Cube: Primitive<Vertex> {
             1, 5, 6,    1, 6, 2     // bottom
         ]
     }
-
+    
     let positions: [float3] = [
         float3(-1, 1, 1), float3(-1, -1, 1), float3(1, -1, 1), float3(1, 1, 1),
         float3(-1, 1, -1), float3(-1, -1, -1), float3(1, -1, -1), float3(1, 1, -1),
         ]
-
+    
     let textureCoords: [float2] = [
         float2(0, 1), float2(0, 0), float2(1, 0), float2(1, 1),
         float2(0, 1), float2(0, 0), float2(1, 0), float2(1, 1)

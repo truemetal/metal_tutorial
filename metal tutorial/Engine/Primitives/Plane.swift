@@ -33,7 +33,7 @@ class Plane: Primitive<Vertex>, Texturable {
     
     override func setVerteciesAndIndecies() {
         let inputs = zip(zip(positions, colors), textureCoords).map { ($0.0, $0.1, $1) }
-        vertecies = inputs.map { Vertex(position: $0, color: $1, textureCoord: $2) }
+        vertecies = inputs.map { Vertex(position: $0, color: $1, textureCoord: $2, normal: float3(1, 0, 0)) }
         indecies = [0, 1, 2, 0, 2, 3]
     }
     

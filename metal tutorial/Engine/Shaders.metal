@@ -67,10 +67,7 @@ vertex VertexOut instance_vertex_shader(const VertexIn vertexIn [[ stage_in ]], 
     return vertex_function(vertexIn, instanceConstants[instanceId], sceneConstants);
 }
 
-fragment float4 lit_textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]], constant Light &light [[ buffer(0) ]]) {
-    float4 color = vertexIn.materialColor * texture.sample(sampler2d, vertexIn.textureCoord);
-    if (color.a == 0) discard_fragment();
-    
+inline half4 lit_color(float4 color, VertexOut vertexIn, constant Light &light) {
     // light
     float3 normal = normalize(vertexIn.normal);
     float diffuseFactor = saturate(-dot(light.direction, normal));
@@ -80,30 +77,45 @@ fragment float4 lit_textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], 
     float3 reflection = reflect(light.direction, normal);
     float3 specularFactor = pow(saturate(-dot(normalize(vertexIn.eyePosition), reflection)), vertexIn.shininess);
     float3 specularLight = light.color * vertexIn.specularIntensity * specularFactor;
-    return color * float4(ambientLight + diffuseLight + specularLight, 1);
+    return half4(color * float4(ambientLight + diffuseLight + specularLight, 1));
 }
 
-fragment float4 textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]]) {
-    float4 color = texture.sample(sampler2d, vertexIn.textureCoord);
+fragment half4 lit_textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]], constant Light &light [[ buffer(0) ]]) {
+    float4 color = vertexIn.materialColor * texture.sample(sampler2d, vertexIn.textureCoord);
     if (color.a == 0) discard_fragment();
-    return color * vertexIn.materialColor;
+    
+    return lit_color(color, vertexIn, light);
 }
 
-fragment float4 masked_textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]], texture2d<float> mask [[ texture(1) ]]) {
-    float4 maskColor = mask.sample(sampler2d, vertexIn.textureCoord);
-    if (maskColor.a < 0.5) { discard_fragment(); }
-    return texture.sample(sampler2d, vertexIn.textureCoord) * vertexIn.materialColor;
+//fragment float4 textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]]) {
+//    float4 color = texture.sample(sampler2d, vertexIn.textureCoord);
+//    if (color.a == 0) discard_fragment();
+//    return color * vertexIn.materialColor;
+//}
+//
+//fragment float4 masked_textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]], texture2d<float> mask [[ texture(1) ]]) {
+//    float4 maskColor = mask.sample(sampler2d, vertexIn.textureCoord);
+//    if (maskColor.a < 0.5) { discard_fragment(); }
+//    return texture.sample(sampler2d, vertexIn.textureCoord) * vertexIn.materialColor;
+//}
+
+fragment half4 lit_vertex_color_fragment_shader(VertexOut vertexIn [[ stage_in ]], constant Light &light [[ buffer(0) ]]) {
+    return lit_color(vertexIn.color, vertexIn, light);
 }
 
-fragment half4 noop_fragment_shader(VertexOut vertexIn [[ stage_in ]]) {
+fragment half4 lit_material_color_fragment_shader(VertexOut vertexIn [[ stage_in ]], constant Light &light [[ buffer(0) ]]) {
+    return lit_color(vertexIn.materialColor, vertexIn, light);
+}
+
+fragment half4 non_lit_vertex_color_fragment_shader(VertexOut vertexIn [[ stage_in ]], constant Light &light [[ buffer(0) ]]) {
     return half4(vertexIn.color);
 }
 
-fragment half4 material_color_fragment_shader(VertexOut vertexIn [[ stage_in ]]) {
+fragment half4 non_lit_material_color_fragment_shader(VertexOut vertexIn [[ stage_in ]], constant Light &light [[ buffer(0) ]]) {
     return half4(vertexIn.materialColor);
 }
 
-fragment half4 grayscale_fragment_shader(VertexOut vertexIn [[ stage_in ]]) {
-    float gray = (vertexIn.color[0] + vertexIn.color[1] + vertexIn.color[2]) / 3;
-    return half4(gray, gray, gray, 1);
-}
+//fragment half4 grayscale_fragment_shader(VertexOut vertexIn [[ stage_in ]]) {
+//    float gray = (vertexIn.color[0] + vertexIn.color[1] + vertexIn.color[2]) / 3;
+//    return half4(gray, gray, gray, 1);
+//}

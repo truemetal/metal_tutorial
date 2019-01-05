@@ -10,8 +10,14 @@ import MetalKit
 
 class Primitive<VertexType>: Node, Renderable where VertexType: VertexWithDescriptor {
     
-    enum ShaderFunction: String { case vertexColor = "noop_fragment_shader", materialColor = "material_color_fragment_shader" }
-    var shaderFunction: ShaderFunction = .materialColor
+    enum ShaderFunction: String {
+        case litVertexColor = "lit_vertex_color_fragment_shader",
+        litMaterialColor = "lit_material_color_fragment_shader",
+        nonLitVertexColor = "non_lit_vertex_color_fragment_shader",
+        nonLitMaterialColor = "non_lit_material_color_fragment_shader"
+    }
+    
+    var shaderFunction: ShaderFunction = .litMaterialColor { didSet { pipelineState = buildPipelineState(withDevice: device) } }
     
     var vertexFunctionName: String { return "vertex_shader" }
     var fragmentFunctionName: String { return shaderFunction.rawValue }

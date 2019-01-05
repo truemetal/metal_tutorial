@@ -18,7 +18,7 @@ class Model: Node, Renderable, Texturable {
     
     var fragmentFunctionName: String {
         if texture != nil { return "lit_textured_fragment_shader" }
-        return "material_color_fragment_shader"
+        return "lit_material_color_fragment_shader"
     }
     
     var texture: MTLTexture?
