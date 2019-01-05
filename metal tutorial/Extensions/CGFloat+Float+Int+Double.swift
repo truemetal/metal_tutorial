@@ -12,7 +12,7 @@ extension CGFloat {
     var fl: Float { return Float(self) }
 }
 
-extension Int {
+extension FixedWidthInteger {
     var fl: Float { return Float(self) }
 }
 

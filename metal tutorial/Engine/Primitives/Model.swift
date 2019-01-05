@@ -24,9 +24,15 @@ class Model: Node, Renderable, Texturable {
     var texture: MTLTexture?
     var meshes: [MTKMesh]
     
-    init(device: MTLDevice, modelName: String) {
-        texture = Model.createTexture(withImageName: modelName + ".png", device: device)
-        meshes = MTKMesh.getMeshes(byLoadingModelWithName: modelName, vertexDescriptor: vertexDescriptor, device: device)
+    convenience init(device: MTLDevice, modelName: String) {
+        let texture = Model.createTexture(withImageName: modelName + ".png", device: device)
+        let meshes = MTKMesh.getMeshes(byLoadingModelWithName: modelName, device: device)
+        self.init(device: device, meshes: meshes, texture: texture)
+    }
+    
+    init(device: MTLDevice, meshes: [MTKMesh], texture: MTLTexture? = nil) {
+        self.texture = texture
+        self.meshes = meshes
         if meshes.count == 0 { expectationFail() }
         super.init()
         pipelineState = buildPipelineState(withDevice: device)

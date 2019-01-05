@@ -10,7 +10,7 @@ import MetalKit
 
 extension MTKMesh {
     
-    class func getMeshes(byLoadingModelWithName modelName: String, vertexDescriptor: MTLVertexDescriptor, device: MTLDevice) -> [MTKMesh] {
+    class func getMeshes(byLoadingModelWithName modelName: String, device: MTLDevice) -> [MTKMesh] {
         guard let url = Bundle.main.url(forResource: modelName, withExtension: "obj") else {
             expectationFail(); return [] }
         
