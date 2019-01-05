@@ -31,13 +31,21 @@ struct VertexOut {
     float4 materialColor;
 };
 
-vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants &modelConstants [[ buffer(1) ]], constant SceneConstants &sceneConstants [[ buffer(2) ]]) {
+inline VertexOut vertex_function(const VertexIn vertexIn, constant ModelConstants &modelConstants, constant SceneConstants &sceneConstants) {
     VertexOut res;
     res.position = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix * vertexIn.position;
     res.color = vertexIn.color;
     res.textureCoord = vertexIn.textureCoord;
     res.materialColor = modelConstants.materialColor;
     return res;
+}
+
+vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants &modelConstants [[ buffer(1) ]], constant SceneConstants &sceneConstants [[ buffer(2) ]]) {
+    return vertex_function(vertexIn, modelConstants, sceneConstants);
+}
+
+vertex VertexOut instance_vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants *instanceConstants [[ buffer(1) ]], constant SceneConstants &sceneConstants [[ buffer(2) ]], uint instanceId [[ instance_id ]]) {
+    return vertex_function(vertexIn, instanceConstants[instanceId], sceneConstants);
 }
 
 fragment float4 textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]]) {

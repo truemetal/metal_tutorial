@@ -13,20 +13,20 @@ class CrowdScene: Scene {
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
         
-        let meshes = MTKMesh.getMeshes(byLoadingModelWithName: "humanFigure", device: device)
+        let model = Model(device: device, modelName: "humanFigure")
+        let people = Instance(device: device, model: model, instanceCount: 200)
+        children.append(people)
         
-        (0 ..< 40).forEach { _ in
-            let m = Model(device: device, meshes: meshes)
-            m.scale = float3(arc4random_uniform(5).fl / 10)
-            m.position.x = arc4random_uniform(20).fl - 10
-            m.position.z = arc4random_uniform(20).fl * -1 - 3
-            m.position.y = -3
-            m.materialColor = float4(drand48().fl, drand48().fl, drand48().fl, 1)
-            children.append(m)
+        for instance in people.instances {
+            instance.scale = float3(arc4random_uniform(2).fl)
+            instance.position.x = arc4random_uniform(160).fl - 80.fl
+            instance.position.z = -arc4random_uniform(200).fl
+            instance.materialColor = float4(drand48().fl, drand48().fl, drand48().fl, 1)
         }
         
-        camera.rotation.x = -30.fl.degreesToRadians
-        camera.position.z = -30
-        camera.position.y = -10
+        people.scale = float3(0.1)
+        people.position.z = -8
+        people.position.y = -3
+        people.rotation.x = -20.fl.degreesToRadians
     }
 }
