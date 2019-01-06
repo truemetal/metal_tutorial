@@ -66,7 +66,6 @@
 		64F51A6621E2376B00BDFDFD /* wall1b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5221E2376A00BDFDFD /* wall1b.jpg */; };
 		64F51A6721E2376B00BDFDFD /* naboo_complex.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5321E2376A00BDFDFD /* naboo_complex.mtl */; };
 		64F51A6821E2376B00BDFDFD /* naboo complex.obj in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5421E2376A00BDFDFD /* naboo complex.obj */; };
-		64F51A6921E2376B00BDFDFD /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5521E2376A00BDFDFD /* readme.txt */; };
 		64F51A6A21E2376B00BDFDFD /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5621E2376A00BDFDFD /* readme.txt */; };
 		64F51A6B21E2376B00BDFDFD /* nb2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5721E2376A00BDFDFD /* nb2.jpg */; };
 		64F51A6C21E2376B00BDFDFD /* nb1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5821E2376A00BDFDFD /* nb1.jpg */; };
@@ -79,6 +78,7 @@
 		64F51A7321E2376B00BDFDFD /* reflect corps.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A6021E2376B00BDFDFD /* reflect corps.jpg */; };
 		64F51A7421E2376B00BDFDFD /* reflect bras.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A6121E2376B00BDFDFD /* reflect bras.jpg */; };
 		64F51A7521E2376B00BDFDFD /* texture corps.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A6221E2376B00BDFDFD /* texture corps.jpg */; };
+		64F51A7721E23D7200BDFDFD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A7621E23D7200BDFDFD /* README.md */; };
 		64FA86E321E0EFF500D08F18 /* CrowdScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA86E221E0EFF500D08F18 /* CrowdScene.swift */; };
 		64FA86E521E0FB2500D08F18 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA86E421E0FB2500D08F18 /* Instance.swift */; };
 		64FCB64121DE846A00CDD5DA /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCB64021DE846A00CDD5DA /* Cube.swift */; };
@@ -147,7 +147,6 @@
 		64F51A5221E2376A00BDFDFD /* wall1b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall1b.jpg; sourceTree = "<group>"; };
 		64F51A5321E2376A00BDFDFD /* naboo_complex.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = naboo_complex.mtl; sourceTree = "<group>"; };
 		64F51A5421E2376A00BDFDFD /* naboo complex.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "naboo complex.obj"; sourceTree = "<group>"; };
-		64F51A5521E2376A00BDFDFD /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		64F51A5621E2376A00BDFDFD /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		64F51A5721E2376A00BDFDFD /* nb2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nb2.jpg; sourceTree = "<group>"; };
 		64F51A5821E2376A00BDFDFD /* nb1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nb1.jpg; sourceTree = "<group>"; };
@@ -160,6 +159,7 @@
 		64F51A6021E2376B00BDFDFD /* reflect corps.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "reflect corps.jpg"; sourceTree = "<group>"; };
 		64F51A6121E2376B00BDFDFD /* reflect bras.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "reflect bras.jpg"; sourceTree = "<group>"; };
 		64F51A6221E2376B00BDFDFD /* texture corps.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "texture corps.jpg"; sourceTree = "<group>"; };
+		64F51A7621E23D7200BDFDFD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		64FA86E221E0EFF500D08F18 /* CrowdScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdScene.swift; sourceTree = "<group>"; };
 		64FA86E421E0FB2500D08F18 /* Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
 		64FCB64021DE846A00CDD5DA /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
@@ -180,6 +180,7 @@
 		641F97E3217E8DF6002BD28B = {
 			isa = PBXGroup;
 			children = (
+				64F51A7621E23D7200BDFDFD /* README.md */,
 				641F97EE217E8DF6002BD28B /* metal tutorial */,
 				641F97ED217E8DF6002BD28B /* Products */,
 			);
@@ -375,7 +376,6 @@
 				64F51A4E21E2376A00BDFDFD /* Maps */,
 				64F51A5321E2376A00BDFDFD /* naboo_complex.mtl */,
 				64F51A5421E2376A00BDFDFD /* naboo complex.obj */,
-				64F51A5521E2376A00BDFDFD /* readme.txt */,
 			);
 			path = "naboo complex";
 			sourceTree = "<group>";
@@ -486,7 +486,6 @@
 				6447EA8121DD317600DD33FF /* picture.png in Resources */,
 				641F97F7217E8DF9002BD28B /* Assets.xcassets in Resources */,
 				64F51A7421E2376B00BDFDFD /* reflect bras.jpg in Resources */,
-				64F51A6921E2376B00BDFDFD /* readme.txt in Resources */,
 				64ACBB7621E1117B00AAE50A /* grass.obj in Resources */,
 				64F51A6421E2376B00BDFDFD /* wall1b2.jpg in Resources */,
 				646D5BF821E0043D00E63B1B /* humanFigure.obj in Resources */,
@@ -508,6 +507,7 @@
 				646D5BFB21E0043D00E63B1B /* texturedCube.obj in Resources */,
 				641F97F5217E8DF6002BD28B /* Main.storyboard in Resources */,
 				64F51A7221E2376B00BDFDFD /* texture bras.jpg in Resources */,
+				64F51A7721E23D7200BDFDFD /* README.md in Resources */,
 				64F51A6B21E2376B00BDFDFD /* nb2.jpg in Resources */,
 				646D5BF721E0043D00E63B1B /* mushroom.obj in Resources */,
 				646D5C0F21E018C900E63B1B /* 8bitSun.obj in Resources */,
