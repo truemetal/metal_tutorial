@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     lazy var renderer: Renderer! = Renderer(metalView: metalView)
     let fpsCalculator = FPSCalculator()
     
+    override var prefersStatusBarHidden: Bool { return true }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -63,6 +65,7 @@ class ViewController: UIViewController {
     var sceneIdx = 0
     
     lazy var scenes: [Scene] = [
+        GameScene(device: renderer.device, size: view.bounds.size),
         R2D2Scene(device: renderer.device, size: view.bounds.size),
         MushroomScene(device: renderer.device, size: view.bounds.size),
         GreenfieldScene(device: renderer.device, size: view.bounds.size),
