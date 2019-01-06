@@ -15,6 +15,7 @@ class GameScene: Scene {
         static let gameHeight: Float = 48
         static let bricksPerRow: UInt = 8
         static let bricksPerColumn: UInt = 8
+        static let panSensitivity: Float = 0.2
     }
     
     lazy var border = Model(device: device, modelName: "border")
@@ -77,5 +78,13 @@ class GameScene: Scene {
                 brick.materialColor = colors[Int(row)]
             }
         }
+    }
+    
+    override func handlePan(translation: CGPoint) {
+        paddle.position.x += translation.x.flt * Constants.panSensitivity
+    }
+    
+    override func handlePinch(scale: Float) {
+        
     }
 }

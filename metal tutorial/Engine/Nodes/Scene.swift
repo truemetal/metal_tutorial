@@ -40,4 +40,13 @@ class Scene: Node {
         encoder.setFragmentBytes(light, index: 0)
         super.render(with: encoder, parentModelViewMatrix: camera.viewMatrix)
     }
+    
+    func handlePan(translation: CGPoint) {
+        camera.rotation.y -= translation.x.flt.degreesToRadians
+        camera.rotation.x -= translation.y.flt.degreesToRadians
+    }
+    
+    func handlePinch(scale: Float) {
+        camera.position.z /= scale
+    }
 }
