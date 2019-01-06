@@ -35,14 +35,13 @@ class ModelWithMultipleTextures: Node, Renderable {
         guard let pipelineState = pipelineState else { expectationFail(); return }
         encoder.setVertexBytes(modelConstants(withModelViewMatrix: modelViewMatrix), index: 1)
         encoder.setRenderPipelineState(pipelineState)
-//        textures.map { encoder.setFragmentTexture($0, index: 0) }
         
         for mesh in meshes {
             let vertexBuffer = mesh.vertexBuffers[0]
             encoder.setVertexBuffer(vertexBuffer.buffer, offset: vertexBuffer.offset, index: 0)
             
             for submesh in mesh.submeshes {
-                textures[mesh.name].map { encoder.setFragmentTexture($0, index: 0) }
+                if textures.count > 0, let texture = textures[mesh.name].valOrExpFail { encoder.setFragmentTexture(texture, index: 0) }
                 encoder.drawIndexedPrimitives(type: submesh.primitiveType, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: submesh.indexBuffer.offset)
             }
         }
