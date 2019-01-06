@@ -14,7 +14,6 @@
 		641F97F5217E8DF6002BD28B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641F97F3217E8DF6002BD28B /* Main.storyboard */; };
 		641F97F7217E8DF9002BD28B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 641F97F6217E8DF9002BD28B /* Assets.xcassets */; };
 		641F97FA217E8DF9002BD28B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641F97F8217E8DF9002BD28B /* LaunchScreen.storyboard */; };
-		6421787821E021ED00FD9824 /* R2D2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 6421787721E021ED00FD9824 /* R2D2.obj */; };
 		6421787A21E021FF00FD9824 /* R2D2Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6421787921E021FF00FD9824 /* R2D2Scene.swift */; };
 		6429D89A21DFE2DD00C1618A /* VertexWithDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6429D89921DFE2DD00C1618A /* VertexWithDescriptor.swift */; };
 		6447EA7F21DD317600DD33FF /* picture-frame-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 6447EA7C21DD317600DD33FF /* picture-frame-mask.png */; };
@@ -42,7 +41,6 @@
 		646D5C0B21E0107800E63B1B /* CubeModelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D5C0A21E0107800E63B1B /* CubeModelScene.swift */; };
 		646D5C0D21E010E700E63B1B /* SunScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D5C0C21E010E700E63B1B /* SunScene.swift */; };
 		646D5C0F21E018C900E63B1B /* 8bitSun.obj in Resources */ = {isa = PBXBuildFile; fileRef = 646D5C0E21E018C900E63B1B /* 8bitSun.obj */; };
-		646D5C1121E01CBD00E63B1B /* naboo complex.obj in Resources */ = {isa = PBXBuildFile; fileRef = 646D5C1021E01CBD00E63B1B /* naboo complex.obj */; };
 		646D5C1321E01CCC00E63B1B /* NabooScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D5C1221E01CCC00E63B1B /* NabooScene.swift */; };
 		6474021A21DE3CA6002F033E /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6474021921DE3CA6002F033E /* MatrixMath.swift */; };
 		6474021C21DE4245002F033E /* ModelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6474021B21DE4245002F033E /* ModelConstants.swift */; };
@@ -62,6 +60,25 @@
 		64ACBB7621E1117B00AAE50A /* grass.obj in Resources */ = {isa = PBXBuildFile; fileRef = 64ACBB7521E1117B00AAE50A /* grass.obj */; };
 		64ACBB7821E111EC00AAE50A /* GreenfieldScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACBB7721E111EC00AAE50A /* GreenfieldScene.swift */; };
 		64ACBB7A21E11AD700AAE50A /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACBB7921E11AD700AAE50A /* Light.swift */; };
+		64F51A6321E2376B00BDFDFD /* dome2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A4F21E2376A00BDFDFD /* dome2.jpg */; };
+		64F51A6421E2376B00BDFDFD /* wall1b2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5021E2376A00BDFDFD /* wall1b2.jpg */; };
+		64F51A6521E2376B00BDFDFD /* ert3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5121E2376A00BDFDFD /* ert3.jpg */; };
+		64F51A6621E2376B00BDFDFD /* wall1b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5221E2376A00BDFDFD /* wall1b.jpg */; };
+		64F51A6721E2376B00BDFDFD /* naboo_complex.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5321E2376A00BDFDFD /* naboo_complex.mtl */; };
+		64F51A6821E2376B00BDFDFD /* naboo complex.obj in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5421E2376A00BDFDFD /* naboo complex.obj */; };
+		64F51A6921E2376B00BDFDFD /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5521E2376A00BDFDFD /* readme.txt */; };
+		64F51A6A21E2376B00BDFDFD /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5621E2376A00BDFDFD /* readme.txt */; };
+		64F51A6B21E2376B00BDFDFD /* nb2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5721E2376A00BDFDFD /* nb2.jpg */; };
+		64F51A6C21E2376B00BDFDFD /* nb1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5821E2376A00BDFDFD /* nb1.jpg */; };
+		64F51A6D21E2376B00BDFDFD /* reflect tete.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5A21E2376B00BDFDFD /* reflect tete.jpg */; };
+		64F51A6E21E2376B00BDFDFD /* texture tete.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5B21E2376B00BDFDFD /* texture tete.jpg */; };
+		64F51A6F21E2376B00BDFDFD /* R2D2 by abrock.obj in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5C21E2376B00BDFDFD /* R2D2 by abrock.obj */; };
+		64F51A7021E2376B00BDFDFD /* texture accesoires.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5D21E2376B00BDFDFD /* texture accesoires.jpg */; };
+		64F51A7121E2376B00BDFDFD /* reflect accesoires.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5E21E2376B00BDFDFD /* reflect accesoires.jpg */; };
+		64F51A7221E2376B00BDFDFD /* texture bras.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A5F21E2376B00BDFDFD /* texture bras.jpg */; };
+		64F51A7321E2376B00BDFDFD /* reflect corps.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A6021E2376B00BDFDFD /* reflect corps.jpg */; };
+		64F51A7421E2376B00BDFDFD /* reflect bras.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A6121E2376B00BDFDFD /* reflect bras.jpg */; };
+		64F51A7521E2376B00BDFDFD /* texture corps.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64F51A6221E2376B00BDFDFD /* texture corps.jpg */; };
 		64FA86E321E0EFF500D08F18 /* CrowdScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA86E221E0EFF500D08F18 /* CrowdScene.swift */; };
 		64FA86E521E0FB2500D08F18 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA86E421E0FB2500D08F18 /* Instance.swift */; };
 		64FCB64121DE846A00CDD5DA /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCB64021DE846A00CDD5DA /* Cube.swift */; };
@@ -78,7 +95,6 @@
 		641F97F6217E8DF9002BD28B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		641F97F9217E8DF9002BD28B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		641F97FB217E8DF9002BD28B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6421787721E021ED00FD9824 /* R2D2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = R2D2.obj; sourceTree = "<group>"; };
 		6421787921E021FF00FD9824 /* R2D2Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R2D2Scene.swift; sourceTree = "<group>"; };
 		6429D89921DFE2DD00C1618A /* VertexWithDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexWithDescriptor.swift; sourceTree = "<group>"; };
 		6447EA7C21DD317600DD33FF /* picture-frame-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame-mask.png"; sourceTree = "<group>"; };
@@ -106,7 +122,6 @@
 		646D5C0A21E0107800E63B1B /* CubeModelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeModelScene.swift; sourceTree = "<group>"; };
 		646D5C0C21E010E700E63B1B /* SunScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunScene.swift; sourceTree = "<group>"; };
 		646D5C0E21E018C900E63B1B /* 8bitSun.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 8bitSun.obj; sourceTree = "<group>"; };
-		646D5C1021E01CBD00E63B1B /* naboo complex.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "naboo complex.obj"; sourceTree = "<group>"; };
 		646D5C1221E01CCC00E63B1B /* NabooScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NabooScene.swift; sourceTree = "<group>"; };
 		6474021921DE3CA6002F033E /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 		6474021B21DE4245002F033E /* ModelConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConstants.swift; sourceTree = "<group>"; };
@@ -126,6 +141,25 @@
 		64ACBB7521E1117B00AAE50A /* grass.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grass.obj; sourceTree = "<group>"; };
 		64ACBB7721E111EC00AAE50A /* GreenfieldScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenfieldScene.swift; sourceTree = "<group>"; };
 		64ACBB7921E11AD700AAE50A /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
+		64F51A4F21E2376A00BDFDFD /* dome2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dome2.jpg; sourceTree = "<group>"; };
+		64F51A5021E2376A00BDFDFD /* wall1b2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall1b2.jpg; sourceTree = "<group>"; };
+		64F51A5121E2376A00BDFDFD /* ert3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ert3.jpg; sourceTree = "<group>"; };
+		64F51A5221E2376A00BDFDFD /* wall1b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall1b.jpg; sourceTree = "<group>"; };
+		64F51A5321E2376A00BDFDFD /* naboo_complex.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = naboo_complex.mtl; sourceTree = "<group>"; };
+		64F51A5421E2376A00BDFDFD /* naboo complex.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "naboo complex.obj"; sourceTree = "<group>"; };
+		64F51A5521E2376A00BDFDFD /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		64F51A5621E2376A00BDFDFD /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		64F51A5721E2376A00BDFDFD /* nb2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nb2.jpg; sourceTree = "<group>"; };
+		64F51A5821E2376A00BDFDFD /* nb1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nb1.jpg; sourceTree = "<group>"; };
+		64F51A5A21E2376B00BDFDFD /* reflect tete.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "reflect tete.jpg"; sourceTree = "<group>"; };
+		64F51A5B21E2376B00BDFDFD /* texture tete.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "texture tete.jpg"; sourceTree = "<group>"; };
+		64F51A5C21E2376B00BDFDFD /* R2D2 by abrock.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "R2D2 by abrock.obj"; sourceTree = "<group>"; };
+		64F51A5D21E2376B00BDFDFD /* texture accesoires.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "texture accesoires.jpg"; sourceTree = "<group>"; };
+		64F51A5E21E2376B00BDFDFD /* reflect accesoires.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "reflect accesoires.jpg"; sourceTree = "<group>"; };
+		64F51A5F21E2376B00BDFDFD /* texture bras.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "texture bras.jpg"; sourceTree = "<group>"; };
+		64F51A6021E2376B00BDFDFD /* reflect corps.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "reflect corps.jpg"; sourceTree = "<group>"; };
+		64F51A6121E2376B00BDFDFD /* reflect bras.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "reflect bras.jpg"; sourceTree = "<group>"; };
+		64F51A6221E2376B00BDFDFD /* texture corps.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "texture corps.jpg"; sourceTree = "<group>"; };
 		64FA86E221E0EFF500D08F18 /* CrowdScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdScene.swift; sourceTree = "<group>"; };
 		64FA86E421E0FB2500D08F18 /* Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
 		64FCB64021DE846A00CDD5DA /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
@@ -214,9 +248,9 @@
 		646D5BEA21E0043C00E63B1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				64F51A4C21E2376A00BDFDFD /* naboo complex */,
+				64F51A5921E2376B00BDFDFD /* R2D2 by abrock */,
 				64ACBB7521E1117B00AAE50A /* grass.obj */,
-				6421787721E021ED00FD9824 /* R2D2.obj */,
-				646D5C1021E01CBD00E63B1B /* naboo complex.obj */,
 				646D5BEB21E0043C00E63B1B /* mushroom */,
 				646D5BEE21E0043C00E63B1B /* humanFigure */,
 				646D5BF021E0043C00E63B1B /* texturedCube */,
@@ -324,6 +358,55 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		64F51A4C21E2376A00BDFDFD /* naboo complex */ = {
+			isa = PBXGroup;
+			children = (
+				64F51A4D21E2376A00BDFDFD /* naboo complex */,
+				64F51A5621E2376A00BDFDFD /* readme.txt */,
+				64F51A5721E2376A00BDFDFD /* nb2.jpg */,
+				64F51A5821E2376A00BDFDFD /* nb1.jpg */,
+			);
+			path = "naboo complex";
+			sourceTree = "<group>";
+		};
+		64F51A4D21E2376A00BDFDFD /* naboo complex */ = {
+			isa = PBXGroup;
+			children = (
+				64F51A4E21E2376A00BDFDFD /* Maps */,
+				64F51A5321E2376A00BDFDFD /* naboo_complex.mtl */,
+				64F51A5421E2376A00BDFDFD /* naboo complex.obj */,
+				64F51A5521E2376A00BDFDFD /* readme.txt */,
+			);
+			path = "naboo complex";
+			sourceTree = "<group>";
+		};
+		64F51A4E21E2376A00BDFDFD /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				64F51A4F21E2376A00BDFDFD /* dome2.jpg */,
+				64F51A5021E2376A00BDFDFD /* wall1b2.jpg */,
+				64F51A5121E2376A00BDFDFD /* ert3.jpg */,
+				64F51A5221E2376A00BDFDFD /* wall1b.jpg */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		64F51A5921E2376B00BDFDFD /* R2D2 by abrock */ = {
+			isa = PBXGroup;
+			children = (
+				64F51A5A21E2376B00BDFDFD /* reflect tete.jpg */,
+				64F51A5B21E2376B00BDFDFD /* texture tete.jpg */,
+				64F51A5C21E2376B00BDFDFD /* R2D2 by abrock.obj */,
+				64F51A5D21E2376B00BDFDFD /* texture accesoires.jpg */,
+				64F51A5E21E2376B00BDFDFD /* reflect accesoires.jpg */,
+				64F51A5F21E2376B00BDFDFD /* texture bras.jpg */,
+				64F51A6021E2376B00BDFDFD /* reflect corps.jpg */,
+				64F51A6121E2376B00BDFDFD /* reflect bras.jpg */,
+				64F51A6221E2376B00BDFDFD /* texture corps.jpg */,
+			);
+			path = "R2D2 by abrock";
+			sourceTree = "<group>";
+		};
 		64FCB63F21DE845A00CDD5DA /* Primitives */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,7 +449,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1000;
-				ORGANIZATIONNAME = "iOS-engineer";
+				ORGANIZATIONNAME = "ios-engineer.com";
 				TargetAttributes = {
 					641F97EB217E8DF6002BD28B = {
 						CreatedOnToolsVersion = 10.0;
@@ -397,22 +480,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				641F97FA217E8DF9002BD28B /* LaunchScreen.storyboard in Resources */,
+				64F51A6521E2376B00BDFDFD /* ert3.jpg in Resources */,
 				6447EA8021DD317600DD33FF /* picture-frame.png in Resources */,
 				646D5BF621E0043D00E63B1B /* mushroom.png in Resources */,
 				6447EA8121DD317600DD33FF /* picture.png in Resources */,
 				641F97F7217E8DF9002BD28B /* Assets.xcassets in Resources */,
+				64F51A7421E2376B00BDFDFD /* reflect bras.jpg in Resources */,
+				64F51A6921E2376B00BDFDFD /* readme.txt in Resources */,
 				64ACBB7621E1117B00AAE50A /* grass.obj in Resources */,
+				64F51A6421E2376B00BDFDFD /* wall1b2.jpg in Resources */,
 				646D5BF821E0043D00E63B1B /* humanFigure.obj in Resources */,
+				64F51A7321E2376B00BDFDFD /* reflect corps.jpg in Resources */,
+				64F51A7521E2376B00BDFDFD /* texture corps.jpg in Resources */,
+				64F51A6A21E2376B00BDFDFD /* readme.txt in Resources */,
+				64F51A7121E2376B00BDFDFD /* reflect accesoires.jpg in Resources */,
+				64F51A6321E2376B00BDFDFD /* dome2.jpg in Resources */,
+				64F51A6E21E2376B00BDFDFD /* texture tete.jpg in Resources */,
+				64F51A6C21E2376B00BDFDFD /* nb1.jpg in Resources */,
+				64F51A7021E2376B00BDFDFD /* texture accesoires.jpg in Resources */,
 				6447EA7F21DD317600DD33FF /* picture-frame-mask.png in Resources */,
 				646D5BFA21E0043D00E63B1B /* texturedCube.png in Resources */,
 				646D5BF921E0043D00E63B1B /* texturedCube.blend in Resources */,
-				646D5C1121E01CBD00E63B1B /* naboo complex.obj in Resources */,
+				64F51A6721E2376B00BDFDFD /* naboo_complex.mtl in Resources */,
+				64F51A6D21E2376B00BDFDFD /* reflect tete.jpg in Resources */,
 				646D5BFC21E0043D00E63B1B /* sun.obj in Resources */,
-				6421787821E021ED00FD9824 /* R2D2.obj in Resources */,
+				64F51A6821E2376B00BDFDFD /* naboo complex.obj in Resources */,
 				646D5BFB21E0043D00E63B1B /* texturedCube.obj in Resources */,
 				641F97F5217E8DF6002BD28B /* Main.storyboard in Resources */,
+				64F51A7221E2376B00BDFDFD /* texture bras.jpg in Resources */,
+				64F51A6B21E2376B00BDFDFD /* nb2.jpg in Resources */,
 				646D5BF721E0043D00E63B1B /* mushroom.obj in Resources */,
 				646D5C0F21E018C900E63B1B /* 8bitSun.obj in Resources */,
+				64F51A6F21E2376B00BDFDFD /* R2D2 by abrock.obj in Resources */,
+				64F51A6621E2376B00BDFDFD /* wall1b.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

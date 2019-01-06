@@ -3,7 +3,7 @@
 //  metal tutorial
 //
 //  Created by Dan Pashchenko on 10/23/18.
-//  Copyright © 2018 iOS-engineer. All rights reserved.
+//  Copyright © 2018 ios-engineer.com. All rights reserved.
 //
 
 import UIKit

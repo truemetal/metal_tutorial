@@ -3,7 +3,7 @@
 //  metal tutorial
 //
 //  Created by Dan Pashchenko on 1/5/19.
-//  Copyright © 2019 iOS-engineer. All rights reserved.
+//  Copyright © 2019 ios-engineer.com. All rights reserved.
 //
 
 import MetalKit
@@ -21,7 +21,7 @@ class R2D2Scene: Scene {
         camera.position.z = -6
     }
     
-    lazy var model = Model(device: device, modelName: "R2D2")
+    lazy var model = Model(device: device, modelName: "R2D2 by abrock")
     
     override func animate(time: TimeInterval) {
         model.rotation.y = time.fl
