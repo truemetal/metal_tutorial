@@ -23,6 +23,7 @@ class GameScene: Scene {
     lazy var paddle = Model(device: device, modelName: "paddle")
     lazy var brick = Model(device: device, modelName: "brick")
     lazy var bricks = Instance(device: device, model: brick, instanceCount: Constants.bricksPerRow * Constants.bricksPerColumn)
+    let soundController = GameSoundController(backgroundMusicFileName: "bulletstorm_bg_v1.mp3", popSoundFileName: "pop.wav")
     
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
@@ -43,10 +44,18 @@ class GameScene: Scene {
     }
     
     override func animate(time: TimeInterval) {
+        isPaused = false
+        startPauseCountdown()
+        
         for brick in bricks.instances {
             brick.rotation.y = .pi / 4 * time.flt
             brick.rotation.z = .pi / 4 * time.flt
         }
+    }
+    
+    override func pausedStateDidChange() {
+        if isPaused { soundController?.backgroundMusicPlayer?.pause() }
+        else { soundController?.backgroundMusicPlayer?.play() }
     }
     
     var sceneOffset: Float {

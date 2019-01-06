@@ -35,7 +35,9 @@ class Scene: Node {
     }
     
     func render(with encoder: MTLRenderCommandEncoder) {
-        animate(time: Date().timeIntervalSince(startTime))
+        isPaused = false
+        
+        animate(time: Date().timeIntervalSince(startTime) - pauseDuration)
         encoder.setVertexBytes(SceneConstants(projectionMatrix: camera.projectionMatrix), index: 2)
         encoder.setFragmentBytes(light, index: 0)
         super.render(with: encoder, parentModelViewMatrix: camera.viewMatrix)
@@ -48,5 +50,34 @@ class Scene: Node {
     
     func handlePinch(scale: Float) {
         camera.position.z /= scale
+    }
+    
+    // MARK: pause
+    
+    var isPaused = true {
+        willSet { if newValue == false, isPaused == true { unPause() }  }
+        didSet { pausedStateDidChange() }
+    }
+    
+    var pauseTimer: Timer?
+    var pauseDuration: TimeInterval = 0
+    var pauseStartTime: Date?
+    
+    func unPause() {
+        guard let pauseStartTime = pauseStartTime else { return }
+        pauseDuration += Date().timeIntervalSince(pauseStartTime)
+    }
+    
+    func pausedStateDidChange() {
+        if isPaused == false { startPauseCountdown() }
+    }
+
+    func startPauseCountdown() {
+        pauseTimer?.invalidate()
+        
+        pauseTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { [weak self] _ in
+            self?.isPaused = true
+            self?.pauseStartTime = Date()
+        }
     }
 }
