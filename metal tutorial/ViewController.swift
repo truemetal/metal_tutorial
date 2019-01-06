@@ -35,12 +35,12 @@ class ViewController: UIViewController {
         let t = g.translation(in: metalView)
         g.setTranslation(.zero, in: metalView)
         
-        renderer.scene?.camera.rotation.y -= t.x.fl.degreesToRadians
-        renderer.scene?.camera.rotation.x -= t.y.fl.degreesToRadians
+        renderer.scene?.camera.rotation.y -= t.x.flt.degreesToRadians
+        renderer.scene?.camera.rotation.x -= t.y.flt.degreesToRadians
     }
     
     @objc func pinchGesture(g: UIPinchGestureRecognizer) {
-        renderer.scene?.camera.position.z /= g.scale.fl
+        renderer.scene?.camera.position.z /= g.scale.flt
         g.scale = 1
     }
     

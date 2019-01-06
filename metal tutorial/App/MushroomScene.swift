@@ -31,6 +31,6 @@ class MushroomScene: Scene {
     lazy var model = Model(device: device, modelName: "mushroom")
     
     override func animate(time: TimeInterval) {
-        model.rotation.y = time.fl
+        model.rotation.y = time.flt
     }
 }

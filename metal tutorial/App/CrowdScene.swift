@@ -18,15 +18,15 @@ class CrowdScene: Scene {
         children.append(people)
         
         for instance in people.instances {
-            instance.scale = float3(arc4random_uniform(2).fl)
-            instance.position.x = arc4random_uniform(160).fl - 80.fl
-            instance.position.z = -arc4random_uniform(200).fl
-            instance.materialColor = float4(drand48().fl, drand48().fl, drand48().fl, 1)
+            instance.scale = float3(arc4random_uniform(2).flt)
+            instance.position.x = arc4random_uniform(160).flt - 80.flt
+            instance.position.z = -arc4random_uniform(200).flt
+            instance.materialColor = float4(drand48().flt, drand48().flt, drand48().flt, 1)
         }
         
         people.scale = float3(0.1)
         people.position.z = -8
         people.position.y = -3
-        people.rotation.x = -20.fl.degreesToRadians
+        people.rotation.x = -20.flt.degreesToRadians
     }
 }

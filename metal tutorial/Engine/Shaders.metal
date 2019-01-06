@@ -68,7 +68,6 @@ vertex VertexOut instance_vertex_shader(const VertexIn vertexIn [[ stage_in ]], 
 }
 
 inline half4 lit_color(float4 color, VertexOut vertexIn, constant Light &light) {
-    // light
     float3 normal = normalize(vertexIn.normal);
     float diffuseFactor = saturate(-dot(light.direction, normal));
     float3 diffuseLight = light.color * light.diffuseIntensity * diffuseFactor;
@@ -83,8 +82,7 @@ inline half4 lit_color(float4 color, VertexOut vertexIn, constant Light &light) 
 fragment half4 lit_textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]], constant Light &light [[ buffer(0) ]]) {
     float4 color = vertexIn.materialColor * texture.sample(sampler2d, vertexIn.textureCoord);
     if (color.a == 0) discard_fragment();
-    
-    return lit_color(color, vertexIn, light);
+    return lit_color(color * vertexIn.materialColor, vertexIn, light);
 }
 
 //fragment float4 textured_fragment_shader(VertexOut vertexIn [[ stage_in ]], sampler sampler2d [[ sampler(0) ]], texture2d<float> texture [[ texture(0) ]]) {

@@ -27,8 +27,8 @@ class CubeScene: Scene {
         //        camera.position.y = -1
         //        camera.position.x = 1
         camera.position.z = -6
-        camera.rotation.x = -45.fl.degreesToRadians
-        camera.rotation.y = -45.fl.degreesToRadians
+        camera.rotation.x = -45.flt.degreesToRadians
+        camera.rotation.y = -45.flt.degreesToRadians
     }
     
     lazy var cube = Cube(device: device)
@@ -36,7 +36,7 @@ class CubeScene: Scene {
     lazy var zombieBackPlane = Plane(device: device, textureImageName: "picture.png")
     
     override func animate(time: TimeInterval) {
-        cube.rotation.y = time.fl
-        cube.rotation.z = time.fl
+        cube.rotation.y = time.flt
+        cube.rotation.z = time.flt
     }
 }

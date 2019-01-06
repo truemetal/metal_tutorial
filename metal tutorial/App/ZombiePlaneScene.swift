@@ -27,7 +27,7 @@ class ZombiePlaneScene: Scene {
     lazy var zombiePlane = Plane(device: device, textureImageName: "picture.png")
     
     override func animate(time: TimeInterval) {
-        zombiePlane.rotation.y = time.fl
-        zombiePlane.rotation.z = time.fl
+        zombiePlane.rotation.y = time.flt
+        zombiePlane.rotation.z = time.flt
     }
 }

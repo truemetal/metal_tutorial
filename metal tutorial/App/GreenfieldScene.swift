@@ -22,12 +22,13 @@ class GreenfieldScene: Scene {
         clearColor = MTLClearColor(red: 0.66, green: 0.9, blue: 0.96, alpha: 1.0)
         children.append(contentsOf: [ground, grass, sun, mushroom])
         setupScene()
+        light.direction = float3(1, -1, -1)
     }
     
     func setupScene() {
         ground.materialColor = float4(0.4, 0.3, 0.1, 1)
         ground.scale = float3(20)
-        ground.rotation.x = 90.fl.degreesToRadians
+        ground.rotation.x = 90.flt.degreesToRadians
         
         sun.materialColor = float4(1, 1, 0, 1)
         sun.position.y = 7
@@ -38,10 +39,10 @@ class GreenfieldScene: Scene {
             for column in 0 ..< 100 {
                 let blade = grass.instances[row * 100 + column]
                 blade.scale = float3(0.5)
-                blade.position.x = row.fl / 4
-                blade.position.z = column.fl / 4
+                blade.position.x = row.flt / 4
+                blade.position.z = column.flt / 4
                 blade.materialColor = grassColors[Int(arc4random_uniform(3))]
-                blade.rotation.y = arc4random_uniform(360).fl.degreesToRadians
+                blade.rotation.y = arc4random_uniform(360).flt.degreesToRadians
             }
         }
         
@@ -52,7 +53,7 @@ class GreenfieldScene: Scene {
         mushroom.position.z = -8
         mushroom.scale = float3(2)
         
-        camera.rotation.x = -10.fl.degreesToRadians
+        camera.rotation.x = -10.flt.degreesToRadians
         camera.position.z = -20
         camera.position.y = -2
         camera.fovDegrees = 25

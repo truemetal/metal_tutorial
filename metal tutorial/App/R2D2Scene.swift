@@ -24,6 +24,6 @@ class R2D2Scene: Scene {
     lazy var model = Model(device: device, modelName: "R2D2 by abrock")
     
     override func animate(time: TimeInterval) {
-        model.rotation.y = time.fl
+        model.rotation.y = time.flt
     }
 }

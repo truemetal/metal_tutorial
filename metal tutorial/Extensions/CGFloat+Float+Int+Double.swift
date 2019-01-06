@@ -9,13 +9,13 @@
 import CoreGraphics
 
 extension CGFloat {
-    var fl: Float { return Float(self) }
+    var flt: Float { return Float(self) }
 }
 
 extension FixedWidthInteger {
-    var fl: Float { return Float(self) }
+    var flt: Float { return Float(self) }
 }
 
 extension Double {
-    var fl: Float { return Float(self) }
+    var flt: Float { return Float(self) }
 }

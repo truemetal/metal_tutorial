@@ -24,6 +24,6 @@ class NabooScene: Scene {
     lazy var model = Model(device: device, modelName: "naboo complex")
     
     override func animate(time: TimeInterval) {
-        model.rotation.y = time.fl
+        model.rotation.y = time.flt
     }
 }

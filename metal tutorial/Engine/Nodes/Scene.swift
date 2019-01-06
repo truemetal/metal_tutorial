@@ -16,13 +16,13 @@ class Scene: Node {
         self.size = size
         super.init()
         
-        camera.aspect = size.aspectRatio.fl
+        camera.aspect = size.aspectRatio.flt
         camera.position.z = -4
         children.append(camera)
     }
     
     var device: MTLDevice
-    var size: CGSize { didSet { camera.aspect = size.aspectRatio.fl } }
+    var size: CGSize { didSet { camera.aspect = size.aspectRatio.flt } }
     var camera = Camera()
     var clearColor: MTLClearColor = MTLClearColor(red: 1, green: 1, blue: 1, alpha: 1)
     var light = Light()

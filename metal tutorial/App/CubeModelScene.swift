@@ -22,7 +22,7 @@ class CubeModelScene: Scene {
     lazy var model = Model(device: device, modelName: "texturedCube")
     
     override func animate(time: TimeInterval) {
-        model.rotation.y = time.fl
+        model.rotation.y = time.flt
     }
 }
 
