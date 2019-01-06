@@ -1,15 +1,14 @@
 //
-//  Model.swift
+//  ModelWithMultipleTextures.swift
 //  metal tutorial
 //
-//  Created by Dan Pashchenko on 1/4/19.
+//  Created by Bogdan Pashchenko on 1/6/19.
 //  Copyright © 2019 ios-engineer.com. All rights reserved.
 //
 
 import MetalKit
-import ModelIO
 
-class Model: Node, Renderable {
+class ModelWithMultipleTextures: Node, Renderable {
     
     var pipelineState: MTLRenderPipelineState?
     
@@ -17,21 +16,15 @@ class Model: Node, Renderable {
     var vertexFunctionName: String { return "vertex_shader" }
     
     var fragmentFunctionName: String {
-        if texture != nil { return "lit_textured_fragment_shader" }
+        if textures.count > 0  { return "lit_textured_fragment_shader" }
         return "lit_material_color_fragment_shader"
     }
     
-    var texture: MTLTexture?
+    var textures: [String: MTLTexture]
     var meshes: [MTKMesh]
     
-    convenience init(device: MTLDevice, modelName: String) {
-        let texture = MTKTextureLoader.loadTexture(fromImageNamed: modelName + ".png", device: device)
-        let meshes = MTKMesh.getMeshes(byLoadingModelWithName: modelName, device: device)
-        self.init(device: device, meshes: meshes, texture: texture)
-    }
-    
-    init(device: MTLDevice, meshes: [MTKMesh], texture: MTLTexture? = nil) {
-        self.texture = texture
+    init(device: MTLDevice, meshes: [MTKMesh], textures: [String: MTLTexture]) {
+        self.textures = textures
         self.meshes = meshes
         if meshes.count == 0 { expectationFail() }
         super.init()
@@ -42,13 +35,14 @@ class Model: Node, Renderable {
         guard let pipelineState = pipelineState else { expectationFail(); return }
         encoder.setVertexBytes(modelConstants(withModelViewMatrix: modelViewMatrix), index: 1)
         encoder.setRenderPipelineState(pipelineState)
-        texture.map { encoder.setFragmentTexture($0, index: 0) }
+//        textures.map { encoder.setFragmentTexture($0, index: 0) }
         
         for mesh in meshes {
             let vertexBuffer = mesh.vertexBuffers[0]
             encoder.setVertexBuffer(vertexBuffer.buffer, offset: vertexBuffer.offset, index: 0)
             
             for submesh in mesh.submeshes {
+                textures[mesh.name].map { encoder.setFragmentTexture($0, index: 0) }
                 encoder.drawIndexedPrimitives(type: submesh.primitiveType, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: submesh.indexBuffer.offset)
             }
         }

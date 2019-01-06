@@ -21,9 +21,21 @@ class R2D2Scene: Scene {
         camera.position.z = -6
     }
     
-    lazy var model = Model(device: device, modelName: "R2D2 by abrock")
+    lazy var textures: [String: MTLTexture] = [
+        "axe_bras" : MTKTextureLoader.loadTexture(fromImageNamed: "r2d2 texture bras.jpg", device: device),
+        "acessoires" : MTKTextureLoader.loadTexture(fromImageNamed: "r2d2 texture accesoires.jpg", device: device),
+        "corps" : MTKTextureLoader.loadTexture(fromImageNamed: "r2d2 texture corps.jpg", device: device),
+        "tete" : MTKTextureLoader.loadTexture(fromImageNamed: "r2d2 texture tete.jpg", device: device)
+        ].reduce([:]) {
+            var dict = $0
+            if let v = $1.1 { dict[$1.0] = v }
+            return dict
+    }
+    
+    lazy var model = ModelWithMultipleTextures(device: device, meshes: MTKMesh.getMeshes(byLoadingModelWithName: "r2d2", device: device), textures: textures)
     
     override func animate(time: TimeInterval) {
         model.rotation.y = time.flt
     }
 }
+

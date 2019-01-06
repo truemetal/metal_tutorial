@@ -8,7 +8,7 @@
 
 import MetalKit
 
-class Plane: Primitive<Vertex>, Texturable {
+class Plane: Primitive<Vertex> {
     
     override var fragmentFunctionName: String {
         if texture != nil, maskTexture != nil { return "masked_textured_fragment_shader" }
@@ -20,8 +20,8 @@ class Plane: Primitive<Vertex>, Texturable {
     var maskTexture: MTLTexture? = nil
     
     convenience init(device: MTLDevice, textureImageName: String, maskImageName: String? = nil) {
-        let texture = Plane.createTexture(withImageName: textureImageName, device: device).valOrExpFail
-        let maskTexture = maskImageName.flatMap { Plane.createTexture(withImageName: $0, device: device).valOrExpFail }
+        let texture = MTKTextureLoader.loadTexture(fromImageNamed: textureImageName, device: device).valOrExpFail
+        let maskTexture = maskImageName.flatMap { MTKTextureLoader.loadTexture(fromImageNamed: $0, device: device).valOrExpFail }
         self.init(device: device, texture: texture, maskTexture: maskTexture)
     }
     
