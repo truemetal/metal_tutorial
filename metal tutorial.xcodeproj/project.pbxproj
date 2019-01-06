@@ -305,6 +305,7 @@
 				646D5C0121E00D2A00E63B1B /* MDLVertexDescriptor+SetAttribute.swift */,
 				646D5C0421E00E3000E63B1B /* MDLVertexDescriptor+MDLVertexDescriptor+VertexDescriptorForOBJModels.swift */,
 				646D5C0621E00E8A00E63B1B /* MTKMesh+GetMeshesByLoadingModelWithName.swift */,
+				64F51A8C21E2572400BDFDFD /* MTKTextureLoader+LoadTexture.swift */,
 			);
 			path = Metal;
 			sourceTree = "<group>";
@@ -327,7 +328,6 @@
 				6494062521DE665700D9F477 /* CGSize+AspectRatio.swift */,
 				6493B1BA21DE10EC003CE6C3 /* CGFloat+Float+Int+Double.swift */,
 				646D5BFF21E005DA00E63B1B /* Optional+ExpectationFail.swift */,
-				64F51A8C21E2572400BDFDFD /* MTKTextureLoader+LoadTexture.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
