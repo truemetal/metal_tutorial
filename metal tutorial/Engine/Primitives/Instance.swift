@@ -52,8 +52,11 @@ class Instance: Node, Renderable {
         
         var pointer = buffer.contents().bindMemory(to: ModelConstants.self, capacity: instances.count)
         for instance in instances {
-            pointer.pointee.materialColor = instance.materialColor
             pointer.pointee.modelViewMatrix = matrix_multiply(modelViewMatrix, instance.modelMatrix)
+            pointer.pointee.materialColor = instance.materialColor
+            pointer.pointee.normalMatrix = pointer.pointee.modelViewMatrix.upperLeft3x3()
+            pointer.pointee.specularIntensity = model.specularIntensity
+            pointer.pointee.shininess = model.shininess
             pointer = pointer.advanced(by: 1)
         }
         
