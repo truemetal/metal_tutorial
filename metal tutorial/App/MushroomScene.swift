@@ -19,6 +19,7 @@ class MushroomScene: Scene {
         light.ambientLightIntensity = 0.2
         light.diffuseIntensity = 0.8
         
+        guard let model = model else { expectationFail(); return }
         children.append(model)
         
         model.specularIntensity = 0.2
@@ -28,9 +29,9 @@ class MushroomScene: Scene {
         camera.position.z = -6
     }
     
-    lazy var model = Model(device: device, modelName: "mushroom")
+    lazy var model = try? Model(device: device, modelName: "mushroom")
     
     override func animate(time: TimeInterval) {
-        model.rotation.y = time.flt
+        model?.rotation.y = time.flt
     }
 }

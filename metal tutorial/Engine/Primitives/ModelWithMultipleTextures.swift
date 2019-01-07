@@ -23,11 +23,14 @@ class ModelWithMultipleTextures: Node, Renderable {
     var textures: [String: MTLTexture]
     var meshes: [MTKMesh]
     
-    init(device: MTLDevice, meshes: [MTKMesh], textures: [String: MTLTexture]) {
-        self.textures = textures
-        self.meshes = meshes
+    init(device: MTLDevice, asset: MDLAsset, textures: [String: MTLTexture]) throws {
+        meshes = try MTKMesh.newMeshes(asset: asset, device: device).metalKitMeshes
         if meshes.count == 0 { expectationFail() }
+        self.textures = textures
+        
         super.init()
+        width = asset.width
+        height = asset.height
         pipelineState = buildPipelineState(withDevice: device)
     }
     

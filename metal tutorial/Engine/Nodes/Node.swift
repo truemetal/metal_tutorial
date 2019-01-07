@@ -19,6 +19,8 @@ class Node {
     var materialColor = float4(1)
     var specularIntensity: Float = 1
     var shininess: Float = 1
+    var width: Float = 1
+    var height: Float = 1
     
     var modelMatrix: matrix_float4x4 {
         var matrix = matrix_float4x4(translationX: position.x, y: position.y, z: position.z)
@@ -45,5 +47,12 @@ class Node {
         for child in children {
             child.render(with: encoder, parentModelViewMatrix: modelViewMatrix)
         }
+    }
+    
+    func boundingBox(withParentModelViewMatrix parentModelViewMatrix: float4x4) -> CGRect {
+        let modelViewMatrix = matrix_multiply(parentModelViewMatrix, modelMatrix)
+        let lowerLeft = matrix_multiply(modelViewMatrix, float4(-width / 2, -height / 2, 0, 1))
+        let upperRight = matrix_multiply(modelViewMatrix, float4(width / 2, height / 2, 0, 1))
+        return CGRect(minX: lowerLeft.x, minY: lowerLeft.y, maxX: upperRight.x, maxY: upperRight.y)
     }
 }

@@ -11,7 +11,7 @@ import MetalKit
 class Instance: Node, Renderable {
     
     let model: Model
-    let instances: [Node]
+    var instances: [Node]
     
     // MARK: renderable
     var pipelineState: MTLRenderPipelineState?
@@ -30,6 +30,7 @@ class Instance: Node, Renderable {
     }
     
     func doRender(encoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
+        guard instances.count > 0 else { return }
         guard let pipelineState = pipelineState else { expectationFail(); return }
         
         encoder.setRenderPipelineState(pipelineState)

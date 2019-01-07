@@ -14,6 +14,7 @@ class R2D2Scene: Scene {
         super.init(device: device, size: size)
         clearColor = MTLClearColor(red: 0, green: 0.41, blue: 0.29, alpha: 1.0)
         
+        guard let model = model else { expectationFail(); return }
         children.append(model)
         model.scale = float3(1.0 / 20)
         model.position.y = -2
@@ -32,10 +33,10 @@ class R2D2Scene: Scene {
             return dict
     }
     
-    lazy var model = ModelWithMultipleTextures(device: device, meshes: MTKMesh.getMeshes(byLoadingModelWithName: "r2d2", device: device), textures: textures)
+    lazy var model = try? ModelWithMultipleTextures(device: device, asset: MDLAsset(modelName: "r2d2", device: device) ?? MDLAsset(), textures: textures)
     
     override func animate(time: TimeInterval) {
-        model.rotation.y = time.flt
+        model?.rotation.y = time.flt
     }
 }
 

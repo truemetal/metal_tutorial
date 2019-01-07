@@ -13,7 +13,7 @@ class CrowdScene: Scene {
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
         
-        let model = Model(device: device, modelName: "humanFigure")
+        guard let model = try? Model(device: device, modelName: "humanFigure") else { expectationFail(); return }
         let people = Instance(device: device, model: model, instanceCount: 200)
         children.append(people)
         

@@ -24,17 +24,19 @@ class Model: Node, Renderable {
     var texture: MTLTexture?
     var meshes: [MTKMesh]
     
-    convenience init(device: MTLDevice, modelName: String) {
+    convenience init(device: MTLDevice, modelName: String) throws {
+        guard let asset = MDLAsset(modelName: modelName, device: device).valOrExpFail else { throw generalError }
         let texture = MTKTextureLoader.loadTexture(fromImageNamed: modelName + ".png", device: device)
-        let meshes = MTKMesh.getMeshes(byLoadingModelWithName: modelName, device: device)
-        self.init(device: device, meshes: meshes, texture: texture)
+        try self.init(device: device, asset: asset, texture: texture)
     }
     
-    init(device: MTLDevice, meshes: [MTKMesh], texture: MTLTexture? = nil) {
+    init(device: MTLDevice, asset: MDLAsset, texture: MTLTexture? = nil) throws {
         self.texture = texture
-        self.meshes = meshes
+        self.meshes = try MTKMesh.newMeshes(asset: asset, device: device).metalKitMeshes
         if meshes.count == 0 { expectationFail() }
         super.init()
+        width = asset.width
+        height = asset.height
         pipelineState = buildPipelineState(withDevice: device)
     }
     

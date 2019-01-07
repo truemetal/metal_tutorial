@@ -13,6 +13,8 @@ class SunScene: Scene {
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
         
+        guard let model = model else { expectationFail(); return }
+        
         clearColor = MTLClearColor(red: 0.66, green: 0.9, blue: 0.96, alpha: 1.0)
         model.materialColor = float4(1, 1, 0, 1)
         children.append(model)
@@ -20,9 +22,9 @@ class SunScene: Scene {
         camera.position.z = -6
     }
     
-    lazy var model = Model(device: device, modelName: "8bitSun")
+    lazy var model = try? Model(device: device, modelName: "8bitSun")
     
     override func animate(time: TimeInterval) {
-        model.rotation.y = time.flt
+        model?.rotation.y = time.flt
     }
 }

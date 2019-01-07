@@ -11,21 +11,23 @@ import MetalKit
 class GreenfieldScene: Scene {
     
     lazy var ground = Plane(device: device)
-    lazy var grassModel = Model(device: device, modelName: "grass")
-    lazy var grass = Instance(device: device, model: grassModel, instanceCount: 10000)
-    lazy var mushroom = Model(device: device, modelName: "mushroom")
-    lazy var sun = Model(device: device, modelName: "8bitSun")
+    lazy var grassModel = try? Model(device: device, modelName: "grass")
+    lazy var grass = grassModel.map { Instance(device: device, model: $0, instanceCount: 10000) }
+    lazy var mushroom = try? Model(device: device, modelName: "mushroom")
+    lazy var sun = try? Model(device: device, modelName: "8bitSun")
     
     override init(device: MTLDevice, size: CGSize) {
         super.init(device: device, size: size)
         
         clearColor = MTLClearColor(red: 0.66, green: 0.9, blue: 0.96, alpha: 1.0)
-        children.append(contentsOf: [ground, grass, sun, mushroom])
+        children.append(contentsOf: [ground, grass, sun, mushroom].compactMap { $0 })
         setupScene()
         light.direction = float3(1, -1, -1)
     }
     
     func setupScene() {
+        guard let sun = sun, let mushroom = mushroom, let grass = grass else { expectationFail(); return }
+        
         ground.materialColor = float4(0.4, 0.3, 0.1, 1)
         ground.scale = float3(20)
         ground.rotation.x = 90.flt.degreesToRadians
