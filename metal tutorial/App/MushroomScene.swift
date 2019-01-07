@@ -16,7 +16,7 @@ class MushroomScene: Scene {
         clearColor = MTLClearColor(red: 0, green: 0.4, blue: 0.21, alpha: 1)
         
         light.direction = float3(0, -1, 0)
-        light.ambientLightIntensity = 0.2
+        light.ambientIntensity = 0.2
         light.diffuseIntensity = 0.8
         
         guard let model = model else { expectationFail(); return }

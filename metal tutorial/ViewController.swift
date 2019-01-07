@@ -28,9 +28,16 @@ class ViewController: UIViewController {
 
         setScene()
         
+        metalView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapGesture)))
         metalView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGesture(g:))))
         metalView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture(g:))))
         metalView.gestureRecognizers?.forEach { $0.delegate = self }
+        
+        gameDirector.sceneDidChangeBlock = { [weak self] in self?.renderer.scene.map { self?.scenes[0] = $0 } }
+    }
+    
+    @objc func tapGesture() {
+        renderer.scene?.handleTap()
     }
     
     @objc func panGesture(g: UIPanGestureRecognizer) {
@@ -63,7 +70,7 @@ class ViewController: UIViewController {
     var sceneIdx = 0
     
     lazy var scenes: [Scene] = [
-        GameScene(device: renderer.device, size: view.bounds.size),
+        GameScene(device: renderer.device, size: view.bounds.size, delegate: gameDirector),
         R2D2Scene(device: renderer.device, size: view.bounds.size),
         MushroomScene(device: renderer.device, size: view.bounds.size),
         GreenfieldScene(device: renderer.device, size: view.bounds.size),
@@ -76,6 +83,8 @@ class ViewController: UIViewController {
         CubeScene(device: renderer.device, size: view.bounds.size),
         ZombiePlaneScene(device: renderer.device, size: view.bounds.size)
     ]
+    
+    lazy var gameDirector = GameDirector(renderer: renderer)
 }
 
 extension ViewController: UIGestureRecognizerDelegate {

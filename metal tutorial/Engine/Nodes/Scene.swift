@@ -43,6 +43,8 @@ class Scene: Node {
         super.render(with: encoder, parentModelViewMatrix: camera.viewMatrix)
     }
     
+    func handleTap() { }
+    
     func handlePan(translation: CGPoint) {
         camera.rotation.y -= translation.x.flt.degreesToRadians
         camera.rotation.x -= translation.y.flt.degreesToRadians

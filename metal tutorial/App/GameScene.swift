@@ -8,6 +8,11 @@
 
 import MetalKit
 
+protocol GameSceneDelegate: class {
+    func playerDidWin()
+    func playerDidLoose()
+}
+
 class GameScene: Scene {
     
     enum Constants {
@@ -15,9 +20,10 @@ class GameScene: Scene {
         static let gameHeight: Float = 48
         static let bricksPerRow: UInt = 8
         static let bricksPerColumn: UInt = 8
-        static let panSensitivity: Float = 1
+        static let panSensitivity: Float = 1.5
     }
     
+    weak var delegate: GameSceneDelegate?
     lazy var border = try? Model(device: device, modelName: "border")
     lazy var ball = try? Model(device: device, modelName: "ball")
     lazy var paddle = try? Model(device: device, modelName: "paddle")
@@ -25,9 +31,10 @@ class GameScene: Scene {
     lazy var bricks = brick.map { Instance(device: device, model: $0, instanceCount: Constants.bricksPerRow * Constants.bricksPerColumn) }
     let soundController = GameSoundController(backgroundMusicFileName: "bulletstorm_bg_v1.mp3", popSoundFileName: "pop.wav")
     
-    override init(device: MTLDevice, size: CGSize) {
+    init(device: MTLDevice, size: CGSize, delegate: GameSceneDelegate) {
         super.init(device: device, size: size)
         
+        self.delegate = delegate
         clearColor = MTLClearColor(red: 0, green: 0.41, blue: 0.29, alpha: 1)
         
         camera.position.z = -sceneOffset
@@ -36,7 +43,7 @@ class GameScene: Scene {
         camera.rotation.x = 20.flt.degreesToRadians
         
         light.color = float3(1)
-        light.ambientLightIntensity = 0.3
+        light.ambientIntensity = 0.3
         light.diffuseIntensity = 0.8
         light.direction = float3(0, -1, -1)
         
@@ -53,6 +60,7 @@ class GameScene: Scene {
         checkBorderCollision()
         checkPaddleCollision()
         checkIfGameIsLost()
+        if bricks?.instances.count == 0 { delegate?.playerDidWin() }
     }
     
     func playPopSound() { soundController?.popSoundPlayer?.play() }
@@ -97,7 +105,7 @@ class GameScene: Scene {
     let borderMargin: Float = 3
     lazy var paddleMaxX = Constants.gameWidth - borderMargin
     lazy var paddleMinX = borderMargin
-    var ballVelocity = float2(0.2, 0.3)
+    var ballVelocity = float2(0.2, 0.3) * 2
     
     override func handlePan(translation: CGPoint) {
         guard let paddle = paddle.valOrExpFail else { return }
@@ -153,6 +161,6 @@ extension GameScene {
     
     func checkIfGameIsLost() {
         guard let ball = ball else { expectationFail(); return }
-        if ball.position.y <= 0 { ballVelocity.y *= -1; playPopSound() }
+        if ball.position.y <= 0 { delegate?.playerDidLoose() }
     }
 }
