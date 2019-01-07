@@ -146,7 +146,7 @@ extension GameScene {
         let paddleRect = paddle.boundingBox(withParentModelViewMatrix: camera.modelMatrix)
         
         if ballRect.intersects(paddleRect) {
-            ballVelocity.y *= abs(ballVelocity.y)
+            ballVelocity.y = abs(ballVelocity.y)
             playPopSound()
         }
     }
