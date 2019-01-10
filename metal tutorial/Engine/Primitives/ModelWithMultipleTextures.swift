@@ -24,7 +24,7 @@ class ModelWithMultipleTextures: Node, Renderable {
     var meshes: [MTKMesh]
     
     init(device: MTLDevice, asset: MDLAsset, textures: [String: MTLTexture]) throws {
-        meshes = try MTKMesh.newMeshes(asset: asset, device: device).metalKitMeshes
+        self.meshes = try MTKMesh.newMeshesWithNormals(asset: asset, device: device)
         if meshes.count == 0 { expectationFail() }
         self.textures = textures
         

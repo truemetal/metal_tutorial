@@ -32,7 +32,7 @@ class Model: Node, Renderable {
     
     init(device: MTLDevice, asset: MDLAsset, texture: MTLTexture? = nil) throws {
         self.texture = texture
-        self.meshes = try MTKMesh.newMeshes(asset: asset, device: device).metalKitMeshes
+        self.meshes = try MTKMesh.newMeshesWithNormals(asset: asset, device: device)
         if meshes.count == 0 { expectationFail() }
         super.init()
         width = asset.width
